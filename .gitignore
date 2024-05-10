@@ -36,3 +36,5 @@ media
 
 # Django REST Framework
 api/migrations/
+
+.env
