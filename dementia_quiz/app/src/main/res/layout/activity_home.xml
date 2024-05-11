@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,38 +18,111 @@
             android:layout_marginTop="150dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="334dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="40sp"
             android:layout_marginTop="100sp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="180sp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#990000"
                 android:text="簡単"
-                android:textSize="25sp"/>
+                android:textSize="40sp" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="180sp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40sp"
+                android:backgroundTint="#9900"
                 android:text="普通"
-                android:textSize="25sp"
-                android:layout_marginLeft="30dp" />
+                android:textSize="40sp" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="180sp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40sp"
+                android:backgroundTint="#9900"
                 android:text="難しい"
-                android:textSize="25sp"
-                android:layout_marginLeft="30dp" />
-
-
-
-
+                android:textSize="40sp" />
         </LinearLayout>
-
-
+<!--星1列目-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="100sp">
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                />
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"/>
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"/>
+        </LinearLayout>
+<!--星2列目-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="100sp"
+            android:layout_marginLeft="40sp">
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:visibility="invisible"
+                />
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"/>
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"/>
+        </LinearLayout>
+<!--星3列目        -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="100sp"
+            android:layout_marginLeft="80sp">
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:visibility="invisible"
+                />
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"
+                android:visibility="invisible"/>
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="65dp"
+                app:srcCompat="@drawable/star"
+                android:layout_marginTop="50sp"/>
+        </LinearLayout>
 
 
 
