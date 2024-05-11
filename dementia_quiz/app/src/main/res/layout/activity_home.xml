@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".home">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="150dp" />
 
+            <!--ボタンセレクト-->
             <LinearLayout
                 android:layout_width="334dp"
                 android:layout_height="wrap_content"
@@ -39,7 +40,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#990000"
                     android:text="簡単"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:onClick="home_game_easy"/>
 
                 <Button
                     android:layout_width="180sp"
@@ -47,7 +49,8 @@
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="普通"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:onClick="home_game_normal"/>
 
                 <Button
                     android:layout_width="180sp"
@@ -55,7 +58,8 @@
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="難しい"
-                    android:textSize="40sp" />
+                    android:textSize="40sp"
+                    android:onClick="home_game_difficult"/>
             </LinearLayout>
             <!--星1列目-->
             <LinearLayout
@@ -105,7 +109,7 @@
                     app:srcCompat="@drawable/star"
                     android:layout_marginTop="50sp"/>
             </LinearLayout>
-            <!--星3列目        -->
+            <!--星3列目-->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,9 +136,7 @@
                     android:layout_marginTop="50sp"/>
             </LinearLayout>
 
-
-
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
