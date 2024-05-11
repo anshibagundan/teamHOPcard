@@ -10,7 +10,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="難易度"
+            android:text="難易度w"
             android:textSize="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp" />
