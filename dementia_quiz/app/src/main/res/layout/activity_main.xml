@@ -21,13 +21,15 @@
             android:textSize="80sp" />
 
         <Button
+            android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="170sp"
             android:backgroundTint="#990000"
             android:text="開始"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            android:onClick="main_home"/>
 
         <ImageView
             android:layout_width="214dp"
