@@ -36,30 +36,34 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/easy"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#990000"
                     android:text="簡単"
                     android:textSize="40sp"
-                    android:onClick="home_game_easy"/>
+                    android:onClick="setEasy"
+                    />
 
                 <Button
+                    android:id="@+id/normal"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="普通"
                     android:textSize="40sp"
-                    android:onClick="home_game_normal"/>
+                    android:onClick="setNormal"/>
 
                 <Button
+                    android:id="@+id/difficult"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="難しい"
                     android:textSize="40sp"
-                    android:onClick="home_game_difficult"/>
+                    android:onClick="setDifficult"/>
             </LinearLayout>
             <!--星1列目-->
             <LinearLayout
