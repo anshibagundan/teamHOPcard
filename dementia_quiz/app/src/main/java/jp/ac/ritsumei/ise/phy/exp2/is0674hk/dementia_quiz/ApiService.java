@@ -25,6 +25,16 @@ import java.util.List;
         Call<Act_TF> getAct_tfsById(@Path("id") int act_tfsId);
 
 
+        @GET("/act-selects/")
+        Call<List<Act_select>> getAct_select();
+        @GET("/act_selects/{id}/")
+        Call<Act_select> getAct_selectById(@Path("id") int Act_selectId);
+        @GET("/quiz-selects/")
+        Call<List<Quiz_select>> getQuiz_select();
+        @GET("/quiz_selects/{id}/")
+        Call<Quiz_select> getQuiz_selectById(@Path("id") int Quiz_selectId);
+
+
         @POST("/quiz-selects/")
         Call<Void> insertQuiz_selectData(@Body Quiz_select data);
         @POST("/act-selects/")

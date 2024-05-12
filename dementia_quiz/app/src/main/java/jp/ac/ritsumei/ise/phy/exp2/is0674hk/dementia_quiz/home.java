@@ -37,7 +37,7 @@ public class home extends AppCompatActivity {
         quiz_selectDiff=findViewById(R.id.quiz_selectDiff);
 
     }
-
+//クイズの難易度をPOST＋画面遷移
     public void set_quizEasy(View view){
         Quiz_select data =new Quiz_select(1,1);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
@@ -57,7 +57,6 @@ public class home extends AppCompatActivity {
         Intent intent = new Intent(this, game.class);
         startActivity(intent);
     }
-
     public void set_quizNormal(View view){
         Quiz_select data=new Quiz_select(1,2);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
@@ -77,7 +76,6 @@ public class home extends AppCompatActivity {
         Intent intent = new Intent(this,game.class);
         startActivity(intent);
     }
-
     public void set_quizDifficult(View view){
         Quiz_select data=new Quiz_select(1,3);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
@@ -98,6 +96,7 @@ public class home extends AppCompatActivity {
         startActivity(intent);
     }
 
+//アクションの難易度をPOST＋画面遷移
     public void set_actEasy(View view){
         Act_select data =new Act_select(1,1);
         apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
@@ -136,39 +135,28 @@ public class home extends AppCompatActivity {
         act_selectDiff.setVisibility(View.GONE);
         quiz_selectDiff.setVisibility(View.VISIBLE);
     }
-    public void set_actDifficult(View view){
-        Act_select data =new Act_select(1,3);
+    public void set_actDifficult(View view) {
+        Act_select data = new Act_select(1, 3);
         apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if(response.isSuccessful()){
-                    Log.d("set_actDifficult","success");
-                }else{
-                    Log.e("set_actDifficult","fail");
+                if (response.isSuccessful()) {
+                    Log.d("set_actDifficult", "success");
+                } else {
+                    Log.e("set_actDifficult", "fail");
                 }
             }
+
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("set_actDifficult","connection_fail");
+                Log.e("set_actDifficult", "connection_fail");
             }
         });
         act_selectDiff.setVisibility(View.GONE);
         quiz_selectDiff.setVisibility(View.VISIBLE);
     }
-
-
-
-
-//    public void home_game_easy(View view){
-//        Intent intent = new Intent(this,game_easy.class);
-//        startActivity(intent);
-//    }
-//    public void home_game_normal(View view){
-//        Intent intent = new Intent(this,game_normal.class);
-//        startActivity(intent);
-//    }
-//    public void home_game_difficult(View view){
-//        Intent intent = new Intent(this,game_difficult.class);
-//        startActivity(intent);
-//    }
 }
+
+
+
+
