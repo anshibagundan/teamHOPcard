@@ -37,6 +37,7 @@ Library: /Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_V
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator;
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.StarterAssets;
 --assembly-defines=Unity.XR.Management;
+--assembly-defines=Unity.XR.MockHMD;
 --assembly-defines=Unity.XR.OpenXR;
 --assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
 --assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
@@ -147,6 +148,7 @@ Library: /Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_V
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator;
 --assembly-defines=Unity.XR.Interaction.Toolkit.Samples.StarterAssets;
 --assembly-defines=Unity.XR.Management;
+--assembly-defines=Unity.XR.MockHMD;
 --assembly-defines=Unity.XR.OpenXR;
 --assembly-defines=Unity.XR.OpenXR.Features.ConformanceAutomation;
 --assembly-defines=Unity.XR.OpenXR.Features.MetaQuestSupport;
