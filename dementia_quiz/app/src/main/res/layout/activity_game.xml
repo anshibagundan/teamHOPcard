@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".game_normal">
+    tools:context=".game"
+    android:background="#E6F9FE">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#E6F9FE">
+        android:layout_height="match_parent" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="普通"
+            android:text="簡単"
             android:textSize="100sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40sp"/>

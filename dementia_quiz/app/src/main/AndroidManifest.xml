@@ -21,7 +21,7 @@
             android:name=".game_normal"
             android:exported="false" />
         <activity
-            android:name=".game_easy"
+            android:name=".game"
             android:exported="false" />
         <activity
             android:name=".home"
