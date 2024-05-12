@@ -7,39 +7,48 @@
     tools:context=".MainActivity">
 
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="title"-->
-<!--        android:textSize="60dp"-->
-<!--        android:layout_gravity="center"-->
-
-
-<!--        />-->
-
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#E6F9FE">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="title"
-            android:textSize="80dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="150dp" />
+            android:layout_marginTop="150dp"
+            android:text="title"
+            android:textSize="80sp" />
 
         <Button
+            android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="開始"
-            android:textSize="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="170sp"
+            android:backgroundTint="#990000"
+            android:text="開始"
+            android:textSize="60sp"
+            android:onClick="main_home"/>
 
+        <ImageView
+            android:layout_width="214dp"
+            android:layout_height="193dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/quiz_dog" />
 
-
+        <ImageView
+            android:layout_width="131dp"
+            android:layout_height="161dp"
+            android:rotation="-40"
+            app:srcCompat="@drawable/hatena" />
+        <ImageView
+            android:layout_width="131dp"
+            android:layout_height="161dp"
+            app:srcCompat="@drawable/hatena"
+            android:rotation="40"
+            android:layout_gravity="right"
+            />
 
     </FrameLayout>
 
