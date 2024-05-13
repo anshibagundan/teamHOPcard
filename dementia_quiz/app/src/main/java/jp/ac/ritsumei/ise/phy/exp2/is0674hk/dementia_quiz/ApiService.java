@@ -38,10 +38,10 @@ import java.util.List;
 
 
         //ここで前データ削除用メソッド定義
-        @DELETE("quiz-select/destroy_all/")
+        @DELETE("/quiz-selects/destroy_all/")
         Call<Void> deleteAllQuizSelect();
 
-        @DELETE("act-select/destroy_all/")
+        @DELETE("/act-selects/destroy_all/")
         Call<Void> deleteAllActSelect();
 
 
