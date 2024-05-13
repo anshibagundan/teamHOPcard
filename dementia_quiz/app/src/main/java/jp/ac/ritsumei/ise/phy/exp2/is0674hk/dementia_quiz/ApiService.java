@@ -1,15 +1,11 @@
 package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 
-import android.location.Location;
-import android.service.autofill.UserData;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -40,6 +36,13 @@ import java.util.List;
         @POST("/act-selects/")
         Call<Void> insertAct_selectData(@Body Act_select data);
 
+
+        //ここで前データ削除用メソッド定義
+        @DELETE("/quiz-selects/destroy_all/")
+        Call<Void> deleteAllQuizSelect();
+
+        @DELETE("/act-selects/destroy_all/")
+        Call<Void> deleteAllActSelect();
 
 
     }
