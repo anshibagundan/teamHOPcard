@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="">
+    <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="ウォーキングクイズのTF送信とクイズ取得完了">
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_GetQuiz.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_GetQuiz.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_PostQuizTF.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_PostQuizTF.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/JsonHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/JsonHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/PostQuizTF.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/PostQuizTF.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/Quiz.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/Quiz.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizTF.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizTF.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneOSX.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/C#/GetQuizDifficult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/GetQuizDifficult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/UpdateResultText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/UpdateResultText.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XRI/Settings/Resources/XRDeviceSimulatorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XRI/Settings/Resources/XRDeviceSimulatorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +47,25 @@
     &quot;accountId&quot;: &quot;b297cf6b-fd67-4010-9865-f854517ad97c&quot;
   }
 }</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2gJifVkSF4zUFZOQ8joxe0nclyk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Unity エディターにアタッチ.Unity エディターにアタッチ.executor&quot;: &quot;Debug&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/3101 の #14&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/3501&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,8 +82,24 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Unity エディターにアタッチ.Unity エディターにアタッチ">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="ユニットテスト (バッチモード)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.5f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.5f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.5f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -77,7 +115,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity エディターにアタッチ" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -87,7 +125,7 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Unity エディターにアタッチして再生" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -126,12 +164,18 @@
       <workItem from="1715482383974" duration="198000" />
       <workItem from="1715484993828" duration="303000" />
       <workItem from="1715485653270" duration="7649000" />
+      <workItem from="1715571912872" duration="3166000" />
+      <workItem from="1715575378368" duration="360000" />
+      <workItem from="1715576534983" duration="3722000" />
+      <workItem from="1715584888628" duration="9193000" />
+      <workItem from="1715595090700" duration="783000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -151,7 +195,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="ウォーキングクイズのTF送信とクイズ取得完了" />
+    <option name="LAST_COMMIT_MESSAGE" value="ウォーキングクイズのTF送信とクイズ取得完了" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

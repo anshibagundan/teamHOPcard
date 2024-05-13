@@ -17,7 +17,6 @@ public class GetQuizDifficulty : MonoBehaviour
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
-
             webRequest.SetRequestHeader("X-Debug-Mode", "true");
             yield return webRequest.SendWebRequest();
 
@@ -50,20 +49,4 @@ public class QuizDifficulty
 {
     public int id;
     public int select_diff;
-}
-
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        string newJson = "{ \"array\": " + json + "}";
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(newJson);
-        return wrapper.array;
-    }
-
-    [System.Serializable]
-    private class Wrapper<T>
-    {
-        public T[] array;
-    }
 }
