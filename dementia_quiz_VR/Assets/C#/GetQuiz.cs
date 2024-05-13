@@ -11,7 +11,7 @@ public class GetQuiz : MonoBehaviour
     public TextMeshProUGUI Quizsel_2;
     private const string url = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
 
-    public void FetchData()
+    public void Start()
     {
         StartCoroutine(GetData());
     }
