@@ -17,6 +17,9 @@ public class game extends AppCompatActivity {
 
     private ApiService apiService;
     private TextView act_text;
+    private TextView quiz_text;
+    private String quiz_diff_text;
+    private String act_diff_text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,7 @@ public class game extends AppCompatActivity {
         apiService = ApiClient.getApiService();
 
         act_text=findViewById(R.id.act_text);
+        quiz_text=findViewById(R.id.quiz_text);
 
         act_setText();
         quiz_setText();
@@ -39,8 +43,20 @@ public class game extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("act_diff", String.valueOf(response.body().get(0)));
                     act_diff = response.body().get(0).getSelect_diff();
-                    act_text.setText(String.valueOf(act_diff));
+                    switch (act_diff){
+                        case 1:
+                            act_diff_text="簡単";
+                            break;
+                        case 2:
+                            act_diff_text="普通";
+                            break;
+                        case 3:
+                            act_diff_text="難しい";
+                            break;
+                    }
+                    act_text.setText(String.valueOf(act_diff_text));
                     Log.d("act_diff", String.valueOf(act_diff));
+
 
                 }else{
                     Log.e("act_diff", "fail ");
@@ -62,7 +78,18 @@ public class game extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("act_diff", String.valueOf(response.body().get(0)));
                     quiz_diff = response.body().get(0).getSelect_diff();
-                    act_text.setText(String.valueOf(quiz_diff));
+                    switch (quiz_diff){
+                        case 1:
+                            quiz_diff_text="簡単";
+                            break;
+                        case 2:
+                            quiz_diff_text="普通";
+                            break;
+                        case 3:
+                            quiz_diff_text="難しい";
+                            break;
+                    }
+                    quiz_text.setText(String.valueOf(quiz_diff_text));
                     Log.d("act_diff", String.valueOf(quiz_diff));
 
                 }else{
