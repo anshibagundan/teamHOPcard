@@ -9,14 +9,21 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button start_button;
+    private ApiService apiService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button start_button = findViewById(R.id.start);
+        apiService = ApiClient.getApiService();
+        start_button = findViewById(R.id.start);
     }
 
 public void main_home(View view){
+    //ここで前データ削除用メソッド呼び出し
+    apiService.deleteAllQuizSelect();
+    apiService.deleteAllActSelect();
     Intent intent = new Intent(this,home.class);
     startActivity(intent);
 }
