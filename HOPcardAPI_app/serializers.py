@@ -4,12 +4,12 @@ from .models import Quiz, Action, Quiz_select, Act_select, Quiz_TF, Act_TF
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
-        fields = ['id', 'name', 'difficulty']
+        fields = ['id', 'name', 'difficulty', 'sel_1', 'sel_2']
 
 class ActionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Action
-        fields = ['id', 'name', 'difficulty']
+        fields = ['id', 'name', 'difficulty', 'sel_1', 'sel_2']
 
 class QuizSelectSerializer(serializers.ModelSerializer):
     class Meta:
