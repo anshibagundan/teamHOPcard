@@ -5,7 +5,10 @@ using TMPro;
 public class ButtonClickHandler_GetQuiz : MonoBehaviour
 {
     public GetQuiz quiz;
-    public TextMeshProUGUI resultText;
+    public TextMeshProUGUI Quizname;
+    public TextMeshProUGUI Quizsel_1;
+    public TextMeshProUGUI Quizsel_2;
+
 
     private Button button;
 
@@ -23,6 +26,9 @@ public class ButtonClickHandler_GetQuiz : MonoBehaviour
 
     private void UpdateResultText()
     {
-        resultText.text = quiz.resultText.text;
+        Quizname.text = quiz.Quizname.text;
+        Quizsel_1.text = quiz.Quizsel_1.text;
+        Quizsel_2.text = quiz.Quizsel_2.text;
+
     }
 }

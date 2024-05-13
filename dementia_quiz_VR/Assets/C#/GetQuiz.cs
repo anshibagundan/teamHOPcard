@@ -6,7 +6,9 @@ using TMPro;
 
 public class GetQuiz : MonoBehaviour
 {
-    public TextMeshProUGUI resultText;
+    public TextMeshProUGUI Quizname;
+    public TextMeshProUGUI Quizsel_1;
+    public TextMeshProUGUI Quizsel_2;
     private const string url = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
 
     public void FetchData()
@@ -33,8 +35,11 @@ public class GetQuiz : MonoBehaviour
 
                 if (quizDataArray != null && quizDataArray.Length > 0)
                 {
-                    Quiz firstQuizData = quizDataArray[1];
-                    resultText.text = firstQuizData.name;
+                    Quiz QuizData = quizDataArray[0];
+                    Quizname.text = QuizData.name;
+                    Quizsel_1.text = "1: " + QuizData.sel_1;
+                    Quizsel_2.text = "2: " + QuizData.sel_2;
+
                 }
                 else
                 {
