@@ -2736,7 +2736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1498876484}
-  - component: {fileID: 1498876483}
+  - component: {fileID: 1498876485}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -2744,18 +2744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1498876483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498876482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c060d9c251047498f2a22ac95fbe0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1498876484
 Transform:
   m_ObjectHideFlags: 0
@@ -2771,6 +2759,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498876485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498876482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dacf36dbf00d34c83aca8dc0b214381a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691423397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,9 +3186,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2146892151}
-        m_TargetAssemblyTypeName: SceneLoaderToWalkingQuiz, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 1498876485}
+        m_TargetAssemblyTypeName: changeScene, Assembly-CSharp
+        m_MethodName: change_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2146892146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c060d9c251047498f2a22ac95fbe0f, type: 3}
+  m_Script: {fileID: 11500000, guid: dacf36dbf00d34c83aca8dc0b214381a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
