@@ -60,3 +60,5 @@ crashlytics-build.properties
 # Oculus Quest specific
 /[Aa]ssets/Oculus/VR/Plugins/Android32
 /[Aa]ssets/Oculus/VR/Plugins/Android64
+
+.idea
