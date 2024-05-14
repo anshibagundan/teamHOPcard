@@ -12,6 +12,7 @@ public class PlayerMover : MonoBehaviour
     private InputMove _gameInputs;
     private Vector2 _moveInputValue;
 
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();

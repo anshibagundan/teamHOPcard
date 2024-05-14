@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class OnTriggerEnter : MonoBehaviour
+public class CollisionHandler : MonoBehaviour
 {
-   private void CollisionTrigger(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("QuizCollider"))
+        if (other.CompareTag("QuizCollider"))
         {
             SceneManager.LoadScene("QuizScene");
         }
