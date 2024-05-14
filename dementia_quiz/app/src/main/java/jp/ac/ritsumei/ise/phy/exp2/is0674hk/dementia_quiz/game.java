@@ -2,6 +2,7 @@ package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -104,4 +105,13 @@ public class game extends AppCompatActivity {
         });
 
     }
+
+    public void game_result(View view){
+            Intent intent = new Intent(this,result.class);
+            startActivity(intent);
+    }
+
+
+
+
 }
