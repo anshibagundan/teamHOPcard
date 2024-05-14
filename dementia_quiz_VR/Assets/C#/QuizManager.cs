@@ -6,12 +6,16 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuizManager : MonoBehaviour
 {
     public TextMeshProUGUI Quizname;
     public TextMeshProUGUI Quizsel_1;
     public TextMeshProUGUI Quizsel_2;
+    public GameObject objectToRotate;
+    public float rotationDuration = 1f; // 回転にかける時間
+    private bool isRotating = false; // 回転中かどうかのフラグ
     private const string difficultyGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-selects/";
     private const string baseGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
     private const string posturl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-tfs/";
@@ -20,6 +24,9 @@ public class QuizManager : MonoBehaviour
     private int randomIndex = 1;
     private int quizDataId = 1;
     private int[] AskedQuestionList;
+    private bool hasnotQuiz = false;
+    private bool isfinalQuiz = false;
+    private bool fullAskedQuiz = false;
 
     //シーンが始まるとクイズを取得する
     public void Start()
@@ -31,6 +38,10 @@ public class QuizManager : MonoBehaviour
     public void PostQuizTF(String LorR)
     {
         StartCoroutine(PostData(LorR));
+        if (!isRotating)
+        {
+            StartCoroutine(RotateCoroutine(LorR));
+        }
     }
 
     //クイズを取得する関数
@@ -86,6 +97,7 @@ public class QuizManager : MonoBehaviour
 
                 if (quizTFDataArray != null && quizTFDataArray.Length > 0)
                 {
+
                     if (quizTFDataArray.Length == 2)
                     {
                         AskedQuestionList = new int[2] { quizTFDataArray[0].quiz, quizTFDataArray[1].quiz };
@@ -94,13 +106,21 @@ public class QuizManager : MonoBehaviour
                     {
                         AskedQuestionList = new int[1] { quizTFDataArray[0].quiz };
                     }
+                    else if (quizTFDataArray.Length >= 3)
+                    {
+
+                        Debug.LogWarning("Asked Quiz Remained");
+                        fullAskedQuiz = true;
+                    }
                 }
                 else
                 {
                     Debug.LogWarning("No Askedquiz found.");
                 }
             }
+
         }
+
 
         //難易度に合わせてクイズを取得
         using (UnityWebRequest webRequest = UnityWebRequest.Get(geturl))
@@ -120,7 +140,7 @@ public class QuizManager : MonoBehaviour
 
                 if (quizDataArray != null && quizDataArray.Length > 0)
                 {
-                    int maxAttempts = 10; // 最大試行回数
+                    int maxAttempts = 30; // 最大試行回数
                     int attempts = 0; // 試行回数のカウンター
 
                     while (attempts < maxAttempts)
@@ -153,6 +173,7 @@ public class QuizManager : MonoBehaviour
                                 Quizname.text = QuizData.name;
                                 Quizsel_1.text = "1: " + QuizData.sel_1;
                                 Quizsel_2.text = "2: " + QuizData.sel_2;
+                                isfinalQuiz = true;
                                 break;
                             }
                         }
@@ -163,12 +184,13 @@ public class QuizManager : MonoBehaviour
                     if (attempts == maxAttempts)
                     {
                         Debug.LogError("Failed to find a quiz that hasn't been asked.");
-                        // 適切なエラー処理を行う
+                        hasnotQuiz = true;
                     }
                 }
                 else
                 {
                     Debug.LogWarning("No quiz found.");
+                    hasnotQuiz = true;
                 }
             }
         }
@@ -177,46 +199,96 @@ public class QuizManager : MonoBehaviour
     //クイズの正解不正解を送る
     private IEnumerator PostData(String LorR)
     {
-        //quizのidが奇数なら左が正解に，偶数なら右が正解にする
-        WWWForm form = new WWWForm();
-
-        if (quizDataId % 2 == 0)
+        if (!hasnotQuiz)
         {
-            if (LorR == "R")
+            //quizのidが奇数なら左が正解に，偶数なら右が正解にする
+            WWWForm form = new WWWForm();
+
+            if (quizDataId % 2 == 0)
             {
-                form.AddField("cor", "true");
-                form.AddField("quiz", quizDataId);
+                if (LorR == "R")
+                {
+                    form.AddField("cor", "true");
+                    form.AddField("quiz", quizDataId);
+                }
+                else if (LorR == "L")
+                {
+                    form.AddField("cor", "false");
+                    form.AddField("quiz", quizDataId);
+                }
             }
-            else if (LorR == "L")
+            else
             {
-                form.AddField("cor", "false");
-                form.AddField("quiz", quizDataId);
+                if (LorR == "R")
+                {
+                    form.AddField("cor", "false");
+                    form.AddField("quiz", quizDataId);
+                }
+                else if (LorR == "L")
+                {
+                    form.AddField("cor", "true");
+                    form.AddField("quiz", quizDataId);
+                }
+            }
+
+            //ここで正解不正解のデータを送る
+            using (UnityWebRequest webRequest = UnityWebRequest.Post(posturl, form))
+            {
+                webRequest.SetRequestHeader("X-Debug-Mode", "true");
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
+                    webRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogError("Error: " + webRequest.error);
+                }
             }
         }
         else
         {
-            if (LorR == "R")
-            {
-                form.AddField("cor", "false");
-                form.AddField("quiz", quizDataId);
-            }
-            else if (LorR == "L")
-            {
-                form.AddField("cor", "true");
-                form.AddField("quiz", quizDataId);
-            }
+            Debug.LogError("no quiz found");
+        }
+    }
+    //回転用
+    IEnumerator RotateCoroutine(String LorR)
+    {
+        isRotating = true;
+        Quaternion startRotation = objectToRotate.transform.rotation;
+        Quaternion endRotation;
+
+        if (LorR == "R")
+        {
+            endRotation = startRotation * Quaternion.Euler(0, 90, 0);
+        }
+        else if(LorR == "L")
+        {
+            endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+        }
+        else
+        {
+            endRotation = startRotation * Quaternion.Euler(0, 0, 0); //おそらくここに到達することはないが...文法エラーを吐いたので
         }
 
-        //ここで正解不正解のデータを送る
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(posturl, form))
-        {
-            webRequest.SetRequestHeader("X-Debug-Mode", "true");
-            yield return webRequest.SendWebRequest();
+        float elapsedTime = 0;
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError("Error: " + webRequest.error);
-            }
+        while (elapsedTime < rotationDuration)
+        {
+            objectToRotate.transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        objectToRotate.transform.rotation = endRotation;
+        isRotating = false;
+
+        // 回転後にシーンを読み込む
+        if (!isfinalQuiz)
+        {
+            SceneManager.LoadScene("WalkScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }
