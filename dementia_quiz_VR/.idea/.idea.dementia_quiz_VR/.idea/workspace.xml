@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/C#/NewBehaviourScript.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/NewBehaviourScript.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/changeScene.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/changeScene.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/C#/GetQuiz.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/GetQuiz.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/InputMove.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/InputMove.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WalkingQuizScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WalkingQuizScene.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +158,7 @@
       <workItem from="1715595090700" duration="783000" />
       <workItem from="1715602185098" duration="1845000" />
       <workItem from="1715608764000" duration="180000" />
-      <workItem from="1715657552197" duration="1032000" />
+      <workItem from="1715657552197" duration="2886000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
