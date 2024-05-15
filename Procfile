@@ -1,1 +1,1 @@
-web: gunicorn HOPcardAPI.wsgi --log-file -
+web: daphne -p $PORT HOTcardAPI.asgi:application
