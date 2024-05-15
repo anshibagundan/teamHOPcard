@@ -7,7 +7,7 @@ public class changeScene : MonoBehaviour
 {
     public void change_button()
     {
-        SceneManager.LoadScene("WalkScene");
+        SceneManager.LoadScene("New_WalkScene");
     }
 
 }

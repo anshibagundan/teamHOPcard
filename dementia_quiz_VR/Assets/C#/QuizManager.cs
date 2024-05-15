@@ -27,6 +27,7 @@ public class QuizManager : MonoBehaviour
     private bool hasnotQuiz = false;
     private bool isfinalQuiz = false;
     private bool fullAskedQuiz = false;
+    private Quaternion endRotation;
 
     //シーンが始まるとクイズを取得する
     public void Start()
@@ -254,20 +255,40 @@ public class QuizManager : MonoBehaviour
     {
         isRotating = true;
         Quaternion startRotation = objectToRotate.transform.rotation;
-        Quaternion endRotation;
 
-        if (LorR == "R")
+
+        if (AskedQuestionList.Length == 0 ||AskedQuestionList.Length == 1 )
         {
-            endRotation = startRotation * Quaternion.Euler(0, 90, 0);
-        }
-        else if(LorR == "L")
+            if (LorR == "R" )
+            {
+                endRotation = startRotation * Quaternion.Euler(0, 90, 0);
+            }
+            else if(LorR == "L")
+            {
+                endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+            }
+            else
+            {
+                endRotation = startRotation * Quaternion.Euler(0, 0, 0);
+            }
+
+        }else if (AskedQuestionList.Length == 2)
         {
-            endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+            if (LorR == "R" )
+            {
+                endRotation = startRotation * Quaternion.Euler(0, 1, 0);
+            }
+            else if(LorR == "L")
+            {
+                endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+            }
+            else
+            {
+                endRotation = startRotation * Quaternion.Euler(0, 0, 0);
+            }
         }
-        else
-        {
-            endRotation = startRotation * Quaternion.Euler(0, 0, 0); //おそらくここに到達することはないが...文法エラーを吐いたので
-        }
+
+
 
         float elapsedTime = 0;
 
@@ -284,11 +305,11 @@ public class QuizManager : MonoBehaviour
         // 回転後にシーンを読み込む
         if (!isfinalQuiz)
         {
-            SceneManager.LoadScene("WalkScene");
+            SceneManager.LoadScene("New_WalkScene");
         }
         else
         {
-            SceneManager.LoadScene("TitleScene");
+            SceneManager.LoadScene("FinalQuizScene");
         }
     }
 }
