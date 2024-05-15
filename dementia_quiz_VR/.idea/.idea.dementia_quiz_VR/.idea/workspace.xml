@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="出題済みクイズを取得しないようにした">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +170,7 @@
       <workItem from="1715669008436" duration="2611000" />
       <workItem from="1715685333738" duration="4545000" />
       <workItem from="1715693926164" duration="5193000" />
+      <workItem from="1715759002489" duration="1183000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
