@@ -12,16 +12,27 @@ class HOPConsumer(AsyncWebsocketConsumer):
         print(f"WebSocket connection closed: {self.channel_name} with code {close_code}")
 
     async def receive(self, text_data):
-        data = json.loads(text_data)
+        if not text_data.strip():
+            print("Received empty message")
+            return
+
+        try:
+            data = json.loads(text_data)
+            print(f"Received JSON data: {data}")
+        except json.JSONDecodeError as e:
+            print(f"JSONDecodeError: {e}")
+            return
+
         x = data.get('x')
         y = data.get('y')
         z = data.get('z')
         print(f"Received coordinates via WebSocket: x={x}, y={y}, z={z}")
 
         # クライアント（例えばAndroidデバイス）にデータを送信
-        await self.send(text_data=json.dumps({
+        response_data = {
             'x': x,
             'y': y,
             'z': z,
-        }))
-        print(f"Sent coordinates back to client: x={x}, y={y}, z={z}")
+        }
+        await self.send(text_data=json.dumps(response_data))
+        print(f"Sent coordinates back to client: {response_data}")
