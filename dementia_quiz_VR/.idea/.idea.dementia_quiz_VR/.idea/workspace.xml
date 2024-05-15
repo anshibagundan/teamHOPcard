@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="出題済みクイズを取得しないようにした">
+      <change afterPath="$PROJECT_DIR$/../dementia_quiz/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/CameraPositionSender.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/CameraPositionSender.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/websocket-sharp.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/websocket-sharp.dll.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/changeScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/changeScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +42,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.meta.xr.sdk.audio@64.0.0/Runtime/scripts/MetaXRAudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.8/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.4.1/Runtime/XRGeneralSettings.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -57,29 +58,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Unity エディターにアタッチ.Unity エディターにアタッチ.executor&quot;: &quot;Debug&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev/Unity&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Unity エディターにアタッチ.Unity エディターにアタッチ.executor": "Debug",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "feature/3102",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/Users/taramanjimacbookpro/Library/Application Support/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="ユニットテスト (バッチモード)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.5f1/Unity.app/Contents/MacOS/Unity" />
@@ -177,6 +178,7 @@
       <workItem from="1715770251530" duration="6000" />
       <workItem from="1715770444145" duration="21000" />
       <workItem from="1715771020445" duration="842000" />
+      <workItem from="1715788340111" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
