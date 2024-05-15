@@ -1,1 +1,1 @@
-web: daphne -p $PORT HOTcardAPI.asgi:application
+web: daphne -p $PORT HOPcardAPI.asgi:application
