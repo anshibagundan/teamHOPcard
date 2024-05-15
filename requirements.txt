@@ -4,3 +4,6 @@ psycopg2
 python-dotenv
 gunicorn
 whitenoise
+channels
+channels-redis
+channels_redis

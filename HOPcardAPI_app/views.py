@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Quiz, Action, Quiz_select, Act_select, Quiz_TF, Act_TF
-from .serializers import QuizSerializer, ActionSerializer, QuizSelectSerializer, ActSelectSerializer, QuizTFSerializer, ActTFSerializer
+from .models import Quiz, Action, Quiz_select, Act_select, Quiz_TF, Act_TF, HOPPosition
+from .serializers import QuizSerializer, ActionSerializer, QuizSelectSerializer, ActSelectSerializer, QuizTFSerializer, ActTFSerializer, HOPPositionSerializer
 
 class QuizViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Quiz.objects.all()
@@ -63,3 +63,7 @@ class ActTFViewSet(viewsets.ModelViewSet):
     def destroy_all(self, request):
         Act_TF.objects.all().delete()
         return Response(status=204)
+
+class HOPPositionViewSet(viewsets.ModelViewSet):
+    queryset = HOPPosition.objects.all()
+    serializer_class = HOPPositionSerializer

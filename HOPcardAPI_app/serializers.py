@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Quiz, Action, Quiz_select, Act_select, Quiz_TF, Act_TF
+from .models import Quiz, Action, Quiz_select, Act_select, Quiz_TF, Act_TF, HOPPosition
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,3 +30,9 @@ class ActTFSerializer(serializers.ModelSerializer):
     class Meta:
         model = Act_TF
         fields = ['id', 'action', 'cor']
+
+
+class HOPPositionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HOPPosition
+        fields = ['id', 'x', 'y', 'z']

@@ -43,7 +43,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HOPcardAPI_app',
     'rest_framework',
+    'channels',
 ]
+
+ASGI_APPLICATION = 'HOPcardAPI.asgi.application'
+
+# REDIS_URL 環境変数から接続情報を取得
+REDIS_URL = os.getenv('REDIS_URL')
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [REDIS_URL],
+        },
+    },
+}
+
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
