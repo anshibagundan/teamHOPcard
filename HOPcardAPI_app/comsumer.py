@@ -12,9 +12,9 @@ class HOPConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         data = json.loads(text_data)
-        x = data['x']
-        y = data['y']
-        z = data['z']
+        x = data.get('x')
+        y = data.get('y')
+        z = data.get('z')
         print(f"Received coordinates via WebSocket: x={x}, y={y}, z={z}")
 
         # クライアント（例えばAndroidデバイス）にデータを送信
