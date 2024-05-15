@@ -7,11 +7,17 @@ class HOPConsumer(AsyncWebsocketConsumer):
         await self.accept()
         print(f"[DEBUG] WebSocket connection accepted: {self.channel_name}")
 
+        # 接続時にメッセージを送信
+        await self.send(text_data=json.dumps({"message": "Welcome!"}))
+        print("[DEBUG] Sent welcome message to client")
+
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard("HOP_group", self.channel_name)
         print(f"[DEBUG] WebSocket connection closed: {self.channel_name} with code {close_code}")
 
     async def receive(self, text_data):
+        print(f"[DEBUG] Received raw data: {text_data}")
+
         if not text_data.strip():
             print("[DEBUG] Received empty message")
             return
@@ -28,7 +34,6 @@ class HOPConsumer(AsyncWebsocketConsumer):
         z = data.get('z')
         print(f"[DEBUG] Received coordinates via WebSocket: x={x}, y={y}, z={z}")
 
-        # クライアント（例えばAndroidデバイス）にデータを送信
         response_data = {
             'x': x,
             'y': y,
@@ -36,4 +41,3 @@ class HOPConsumer(AsyncWebsocketConsumer):
         }
         await self.send(text_data=json.dumps(response_data))
         print(f"[DEBUG] Sent coordinates back to client: {response_data}")
-        
