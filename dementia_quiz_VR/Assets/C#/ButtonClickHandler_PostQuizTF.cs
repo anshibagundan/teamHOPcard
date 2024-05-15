@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ButtonClickHandler_PostQuizTF : MonoBehaviour
 {
-    public PostQuizTF quiztf;
+    public QuizManager quiztf;
 
     public String LorR;
 
@@ -20,7 +20,7 @@ public class ButtonClickHandler_PostQuizTF : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        quiztf.FetchData(LorR);
+        quiztf.PostQuizTF(LorR);
     }
 
 }
