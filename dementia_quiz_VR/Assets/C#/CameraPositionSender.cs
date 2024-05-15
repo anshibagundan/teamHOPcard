@@ -4,7 +4,7 @@ using System.Collections;
 
 public class CameraPositionSender : MonoBehaviour
 {
-    public string websocketUrl = "ws://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/"; // WebSocketサーバーのURL
+    public string websocketUrl = "wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/"; // WebSocketサーバーのURL
     private WebSocket ws;
 
     private void Start()
@@ -33,7 +33,7 @@ public class CameraPositionSender : MonoBehaviour
                 Vector3 cameraPosition = transform.position;
 
                 // 座標をJSON形式に変換
-                string json = JsonUtility.ToJson(new HOPPosition(cameraPosition.x, cameraPosition.y));
+                string json = JsonUtility.ToJson(new HOPPosition(cameraPosition.x, cameraPosition.y, cameraPosition.z));
 
                 Debug.Log("Sending data: " + json);
 
@@ -62,11 +62,13 @@ public class CameraPositionSender : MonoBehaviour
     {
         public float x;
         public float y;
+        public float z;
 
-        public HOPPosition(float x, float y)
+        public HOPPosition(float x, float y, float z)
         {
             this.x = x;
             this.y = y;
+            this.z = z;
         }
     }
 }
