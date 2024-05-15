@@ -105,13 +105,8 @@ public class game extends AppCompatActivity {
         });
 
     }
-
     public void game_result(View view){
             Intent intent = new Intent(this,result.class);
             startActivity(intent);
     }
-
-
-
-
 }
