@@ -46,11 +46,9 @@ public class result extends AppCompatActivity {
             public void onResponse(Call<List<Act_TF>> call, Response<List<Act_TF>> response) {
                 if(response.isSuccessful() && response.body() != null){
                     act1=response.body().get(0).isCor();
-                    //Log.e("act1",String.valueOf(act1));
                     act2=response.body().get(1).isCor();
-                    Log.e("act2",String.valueOf(act2));
                     act3=response.body().get(2).isCor();
-                    Log.e("act3",String.valueOf(act3));
+                    setTF_act();
                 }
             }
             @Override
@@ -65,12 +63,9 @@ public class result extends AppCompatActivity {
             public void onResponse(Call<List<Quiz_TF>> call, Response<List<Quiz_TF>> response) {
                 if(response.isSuccessful() && response.body() != null){
                     quiz1=response.body().get(0).isCor();
-                    Log.e("quiz1",String.valueOf(quiz1));
                     quiz2=response.body().get(1).isCor();
-                    Log.e("quizmanji",String.valueOf(response.body().get(1)));
-                    Log.e("quiz2",String.valueOf(quiz2));
                     quiz3=response.body().get(2).isCor();
-                    Log.e("quiz3",String.valueOf(quiz3));
+                    setTF_quiz();
 
                 }
             }
@@ -80,14 +75,16 @@ public class result extends AppCompatActivity {
                 Log.e("getTF","connection_error");
             }
         });
-        setTF();
+
     }
 //    〇✕テキストをセット
-    public void setTF(){
+    public void setTF_act(){
         act1_text.setText(marubatsu(act1));
-        Log.e("act1",String.valueOf(act1));
         act2_text.setText(marubatsu(act2));
         act3_text.setText(marubatsu(act3));
+
+    }
+    public void setTF_quiz() {
         quiz1_text.setText(marubatsu(quiz1));
         quiz2_text.setText(marubatsu(quiz2));
         quiz3_text.setText(marubatsu(quiz3));
