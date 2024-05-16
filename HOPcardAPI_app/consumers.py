@@ -7,9 +7,6 @@ class HOPConsumer(AsyncWebsocketConsumer):
         await self.accept()
         print(f"[DEBUG] WebSocket connection accepted: {self.channel_name}")
 
-        # 接続時にメッセージを送信
-        await self.send(text_data=json.dumps({"message": "Welcome!"}))
-        print("[DEBUG] Sent welcome message to client")
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard("HOP_group", self.channel_name)
