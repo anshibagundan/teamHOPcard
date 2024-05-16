@@ -48,9 +48,7 @@ INSTALLED_APPS = [
 
 ASGI_APPLICATION = 'HOPcardAPI.asgi.application'
 
-# REDIS_URL 環境変数から接続情報を取得
-REDIS_URL = os.getenv('REDIS_URL')
-
+# websocket同時通信の接続情報
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
