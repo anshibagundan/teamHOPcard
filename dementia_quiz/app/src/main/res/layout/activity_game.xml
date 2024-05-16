@@ -9,15 +9,20 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-56dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="walking"
-                android:textSize="40sp"/>
+                android:textSize="40sp" />
+
             <TextView
                 android:id="@+id/act_text"
                 android:layout_width="wrap_content"
@@ -30,11 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80sp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="quiz"
-                android:textSize="40sp"/>
+                android:textSize="40sp" />
+
             <TextView
                 android:id="@+id/quiz_text"
                 android:layout_width="wrap_content"
@@ -48,18 +55,19 @@
             android:id="@+id/nowgame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ゲーム中・・・"
             android:layout_gravity="center"
-            android:textSize="50sp"/>
+            android:text="ゲーム中・・・"
+            android:textSize="50sp" />
+
         <Button
             android:id="@+id/finish_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="終了"
-            android:textSize="40sp"
-            android:backgroundTint="#990000"
             android:layout_gravity="center"
             android:layout_marginTop="200sp"
-            android:onClick="game_result"/>
+            android:backgroundTint="#990000"
+            android:onClick="game_result"
+            android:text="終了"
+            android:textSize="40sp" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

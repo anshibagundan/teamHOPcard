@@ -1,22 +1,15 @@
 package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
-import okio.ByteString;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +23,6 @@ public class game extends AppCompatActivity {
     private TextView nowgame;
     private String quiz_diff_text;
     private String act_diff_text;
-    private WebSocket ws;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +38,11 @@ public class game extends AppCompatActivity {
 
         act_setText();
         quiz_setText();
-        startWebSocket();
+        WebSocketClient webSocketClient = new WebSocketClient(nowgame);
+        webSocketClient.start();
+
     }
+    
 
     public void act_setText() {
         apiService.getAct_select().enqueue(new Callback<List<Act_select>>() {
@@ -118,58 +113,5 @@ public class game extends AppCompatActivity {
     public void game_result(View view) {
         Intent intent = new Intent(this, result.class);
         startActivity(intent);
-    }
-
-    private void startWebSocket() {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/").build();
-        ws = client.newWebSocket(request, new WebSocketListener() {
-            @Override
-            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
-                Log.d("WebSocket", "Opened");
-            }
-
-            @Override
-            public void onMessage(WebSocket webSocket, String text) {
-                Log.d("WebSocket", "Message: " + text);
-                runOnUiThread(() -> {
-                    try {
-                        JSONObject json = new JSONObject(text);
-                        double x = json.getDouble("x");
-                        double y = json.getDouble("y");
-                        nowgame.setText("X: " + x + ", Y: " + y);
-                    } catch (JSONException e) {
-                        Log.e("WebSocket", "JSON parsing error", e);
-                    }
-                });
-            }
-
-            @Override
-            public void onMessage(WebSocket webSocket, ByteString bytes) {
-                Log.d("WebSocket", "Message: " + bytes.hex());
-                // Handle binary message if needed
-            }
-
-            @Override
-            public void onClosing(WebSocket webSocket, int code, String reason) {
-                webSocket.close(1000, null);
-                Log.d("WebSocket", "Closing: " + code + " / " + reason);
-            }
-
-            @Override
-            public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
-                Log.e("WebSocket", "Error: " + t.getMessage(), t);
-            }
-        });
-
-        client.dispatcher().executorService().shutdown();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (ws != null) {
-            ws.close(1000, "Activity destroyed");
-        }
     }
 }
