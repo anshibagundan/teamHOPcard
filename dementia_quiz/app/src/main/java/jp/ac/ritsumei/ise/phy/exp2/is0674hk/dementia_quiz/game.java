@@ -23,6 +23,7 @@ public class game extends AppCompatActivity {
     private TextView nowgame;
     private String quiz_diff_text;
     private String act_diff_text;
+    private int quizSize,actSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +111,49 @@ public class game extends AppCompatActivity {
         });
     }
 
+
+
+    //gameからresultへの画面遷移
     public void game_result(View view) {
-        Intent intent = new Intent(this, result.class);
-        startActivity(intent);
+        apiService.getAct_tfs().enqueue(new Callback<List<Act_TF>>() {
+            @Override
+            public void onResponse(Call<List<Act_TF>> call, Response<List<Act_TF>> response) {
+                if (response.isSuccessful()&&response.body()!=null){
+                    actSize=response.body().size();
+                    Log.e("actSize",String.valueOf(actSize));
+                    Log.e("quizSize",String.valueOf(quizSize));
+
+                }else{
+                    //エラー時ハンドリング
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Act_TF>> call, Throwable t) {
+                //エラー時ハンドリング
+            }
+        });
+        apiService.getQuiz_tfs().enqueue(new Callback<List<Quiz_TF>>() {
+            @Override
+            public void onResponse(Call<List<Quiz_TF>> call, Response<List<Quiz_TF>> response) {
+                if (response.isSuccessful()&&response.body()!=null){
+                    Log.e("responcebody",String.valueOf(response.body()));
+                    quizSize=response.body().size();
+                    Log.e("responcebody",String.valueOf(quizSize));
+                    if (actSize==1&&quizSize==3){
+                        Intent intent =new Intent(game.this,result.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    //エラー時ハンドリング
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Quiz_TF>> call, Throwable t) {
+                //エラー時ハンドリング
+            }
+        });
+
     }
 }
