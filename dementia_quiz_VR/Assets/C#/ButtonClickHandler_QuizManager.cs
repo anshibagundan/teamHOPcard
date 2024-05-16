@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonClickHandler_PostQuizTF : MonoBehaviour
+public class ButtonClickHandler_QuizManager : MonoBehaviour
 {
     public QuizManager quiztf;
 
