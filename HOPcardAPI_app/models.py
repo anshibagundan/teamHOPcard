@@ -25,12 +25,3 @@ class Quiz_TF(models.Model):
 class Act_TF(models.Model):
     action = models.ForeignKey(Action, on_delete=models.CASCADE)
     cor = models.BooleanField()
-
-
-class HOPPosition(models.Model):
-    x = models.FloatField()
-    y = models.FloatField()
-    z = models.FloatField()
-
-    def __str__(self):
-        return f"Lat: {self.x}, Lon: {self.y}, Alt: {self.z}"
