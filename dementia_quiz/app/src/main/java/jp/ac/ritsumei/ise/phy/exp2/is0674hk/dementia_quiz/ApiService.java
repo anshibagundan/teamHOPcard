@@ -44,6 +44,13 @@ import java.util.List;
         @DELETE("/act-selects/destroy_all/")
         Call<Void> deleteAllActSelect();
 
+        @DELETE("/quiz-tfs/destroy_all/")
+        Call<Void> deleteAllQuizTF();
+
+        @DELETE("/act-tfs/destroy_all/")
+        Call<Void> deleteAllActTF();
+
+
 
 
 
