@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="出題済みクイズを取得しないようにした">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/changeScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/changeScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/CameraPositionSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/CameraPositionSender.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +37,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/taramanjimacbookpro/Documents/GitHub/teamHOPcard/dementia_quiz_VR/Assets/C#/QuizManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.meta.xr.sdk.audio@64.0.0/Runtime/scripts/MetaXRAudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.8/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.4.1/Runtime/XRGeneralSettings.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -63,7 +59,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Unity エディターにアタッチ.Unity エディターにアタッチ.executor&quot;: &quot;Debug&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev/Unity&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/3102&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -177,6 +173,8 @@
       <workItem from="1715770251530" duration="6000" />
       <workItem from="1715770444145" duration="21000" />
       <workItem from="1715771020445" duration="842000" />
+      <workItem from="1715788340111" duration="1311000" />
+      <workItem from="1715790669964" duration="1729000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
