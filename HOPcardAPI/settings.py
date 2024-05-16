@@ -43,7 +43,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'HOPcardAPI_app',
     'rest_framework',
+    'channels',
 ]
+
+ASGI_APPLICATION = 'HOPcardAPI.asgi.application'
+
+# websocket同時通信の接続情報
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.getenv('REDIS_URL')],
+        },
+    },
+}
+
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
