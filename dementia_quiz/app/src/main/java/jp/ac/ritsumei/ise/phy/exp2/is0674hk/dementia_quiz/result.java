@@ -17,12 +17,14 @@ import retrofit2.Response;
 
 public class result extends AppCompatActivity {
     private ApiService apiService;
-    private boolean act1,act2,act3;
-    private boolean quiz1;
+    private boolean act1;
+    private boolean quiz1,quiz2,quiz3;
     private float act_percent,quiz_percent,percent;
     int act_count,quiz_count;
-    private TextView act1_text,act2_text,act3_text;
+    private TextView act1_text;
     private TextView quiz1_text;
+    private TextView quiz2_text;
+    private TextView quiz3_text;
     private DataBaseHelper databaseHelper;
 
     @Override
@@ -32,9 +34,10 @@ public class result extends AppCompatActivity {
         // ApiServiceインスタンスを取得
         apiService = ApiClient.getApiService();
         act1_text=findViewById(R.id.act1_text);
-        act2_text=findViewById(R.id.act2_text);
-        act3_text=findViewById(R.id.act3_text);
+
         quiz1_text=findViewById(R.id.quiz1_text);
+        quiz2_text=findViewById(R.id.quiz2_text);
+        quiz3_text=findViewById(R.id.quiz3_text);
         databaseHelper = new DataBaseHelper(this);
         getTF();
     }
@@ -47,9 +50,8 @@ public class result extends AppCompatActivity {
             public void onResponse(Call<List<Act_TF>> call, Response<List<Act_TF>> response) {
                 if(response.isSuccessful() && response.body() != null){
                     act1=response.body().get(0).isCor();
-                    act2=response.body().get(1).isCor();
-                    act3=response.body().get(2).isCor();
-                    MakeActPercent(act1,act2,act3);
+                    MakeActPercent(act1);
+                    Log.e("act_percent",String.valueOf(act_percent));
                     setTF_act();
                 }
             }
@@ -65,12 +67,15 @@ public class result extends AppCompatActivity {
             public void onResponse(Call<List<Quiz_TF>> call, Response<List<Quiz_TF>> response) {
                 if(response.isSuccessful() && response.body() != null){
                     quiz1=response.body().get(0).isCor();
-                    MakeQuizPercent(quiz1);
-                    setTF_quiz();
+                    quiz2=response.body().get(1).isCor();
+                    quiz3=response.body().get(2).isCor();
+                    MakeQuizPercent(quiz1,quiz2,quiz3);
                     percent=(act_percent+quiz_percent)*100;
+                    setTF_quiz();
 
 
-                    Log.e("act_percent",String.valueOf(act_percent));
+
+                    Log.e("quiz_percent",String.valueOf(quiz_percent));
                     Log.e("percent",String.valueOf(percent));
                 }
             }
@@ -85,12 +90,13 @@ public class result extends AppCompatActivity {
     //〇✕テキストをセット
     public void setTF_act(){
         act1_text.setText(marubatsu(act1));
-        act2_text.setText(marubatsu(act2));
-        act3_text.setText(marubatsu(act3));
+
 
     }
     public void setTF_quiz() {
         quiz1_text.setText(marubatsu(quiz1));
+        quiz2_text.setText(marubatsu(quiz2));
+        quiz3_text.setText(marubatsu(quiz3));
     }
 
     //booleanから〇✕返す
@@ -104,30 +110,31 @@ public class result extends AppCompatActivity {
     }
 
     //履歴に残す%の計算
-    public void MakeActPercent(boolean act1,boolean act2, boolean act3){
+    public void MakeActPercent(boolean act1){
+
         act_count=0;
-        if (act1) {
-            act_count+=20;
-            Log.e("act_count",String.valueOf(act_count));
+        if(act1){
+            act_count+=40;
         }
-        if (act2) {
-            act_count+=20;
-            Log.e("act_count",String.valueOf(act_count));
-        }
-        if (act3) {
-            act_count+=20;
-            Log.e("act_count",String.valueOf(act_count));
-        }
-        Log.e("act_count",String.valueOf(act_count));
-        act_percent=(float)act_count/100;
-        Log.e("act_percent",String.valueOf(act_percent));
+        act_percent=(float) act_count/100;
     }
-    public void MakeQuizPercent(boolean quiz1){
+
+    public void MakeQuizPercent(boolean quiz1,boolean quiz2,boolean quiz3){
         quiz_count=0;
-        if(quiz1){
-            quiz_count+=40;
+        if (quiz1) {
+            quiz_count+=20;
+            Log.e("quiz_count",String.valueOf(quiz_count));
         }
-        quiz_percent=(float) quiz_count/100;
+        if (quiz2) {
+            quiz_count+=20;
+            Log.e("quiz_count",String.valueOf(quiz_count));
+        }
+        if (quiz3) {
+            quiz_count+=20;
+            Log.e("quiz_count",String.valueOf(quiz_count));
+        }
+        Log.e("quiz_count",String.valueOf(quiz_count));
+        quiz_percent=(float)quiz_count/100;
     }
     //perをPOST＋tfデータ削除＋画面遷移
     public void post_per(View view){
