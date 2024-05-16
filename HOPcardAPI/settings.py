@@ -55,7 +55,9 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [REDIS_URL],
+            'hosts': [('ec2-18-208-6-21.compute-1.amazonaws.com', 24660)],
+            'password': 'pfcc372606a77b8d805738fe344bb4ae4881468522fa245ab7612eb3b9774dff5',
+            'ssl': True,
         },
     },
 }
