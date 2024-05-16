@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         apiService = ApiClient.getApiService();
         start_button = findViewById(R.id.start);
+
     }
 
     public void main_home(View view) {
@@ -57,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
                 // Quiz_selectの削除リクエストが失敗した場合のエラーハンドリング
             }
         });
+    }
+    public void main_history(View view){
+        Intent intent = new Intent(this, history.class);
+        startActivity(intent);
+
     }
 
 

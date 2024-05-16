@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Dementia_quiz"
         tools:targetApi="31">
         <activity
+            android:name=".history"
+            android:exported="false" />
+        <activity
+            android:name=".result"
+            android:exported="false" />
+        <activity
             android:name=".game_difficult"
             android:exported="false" />
         <activity

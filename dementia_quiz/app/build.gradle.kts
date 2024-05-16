@@ -44,4 +44,5 @@ dependencies {
     // OkHttp
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation ("org.java-websocket:Java-WebSocket:1.3.8")
 }
