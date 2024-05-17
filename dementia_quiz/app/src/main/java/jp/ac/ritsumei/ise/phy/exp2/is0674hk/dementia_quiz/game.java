@@ -41,6 +41,7 @@ public class game extends AppCompatActivity {
         customCircleView = findViewById(R.id.customCircleView);
 
 
+
         act_setText();
         quiz_setText();
         WebSocketClient webSocketClient = new WebSocketClient(customCircleView);

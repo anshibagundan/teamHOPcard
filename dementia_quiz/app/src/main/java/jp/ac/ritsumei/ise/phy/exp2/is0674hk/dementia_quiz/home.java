@@ -9,9 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import okhttp3.Response;
 
 public class home extends AppCompatActivity {
 
@@ -21,6 +26,8 @@ public class home extends AppCompatActivity {
     private Button difficult;
     private FrameLayout act_selectDiff;
     private FrameLayout quiz_selectDiff;
+    private WebSocket webSocket;
+    private final OkHttpClient client = new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,19 @@ public class home extends AppCompatActivity {
         difficult=findViewById(R.id.difficult);
         act_selectDiff=findViewById(R.id.act_selectDiff);
         quiz_selectDiff=findViewById(R.id.quiz_selectDiff);
+        easy.setOnClickListener(v -> startWebSocket());
+    }
+
+    private void startWebSocket() {
+        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
+        webSocket = client.newWebSocket(request, new WebSocketListener() {
+            @Override
+            public void onOpen(WebSocket webSocket, Response response) {
+                super.onOpen(webSocket, response);
+                webSocket.send("{{startOK}}");
+            }
+        });
+
 
     }
 //クイズの難易度をPOST＋画面遷移
