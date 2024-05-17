@@ -1,7 +1,7 @@
 using System;
 
 [System.Serializable]
-public class Quiz
+public class Action
 {
     public int id;
     public String name;

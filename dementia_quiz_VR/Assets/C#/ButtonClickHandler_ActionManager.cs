@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonClickHandler_PostQuizTF : MonoBehaviour
+public class ButtonClickHandler_ActionManager : MonoBehaviour
 {
-    public QuizManager quiztf;
+    public ActionManager quiztf;
 
     public String LorR;
 
@@ -20,7 +20,7 @@ public class ButtonClickHandler_PostQuizTF : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        quiztf.PostQuizTF(LorR);
+        quiztf.PostActTF(LorR);
     }
 
 }

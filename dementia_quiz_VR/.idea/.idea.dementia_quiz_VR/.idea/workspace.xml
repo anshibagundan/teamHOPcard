@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="出題済みクイズを取得しないようにした">
-      <change beforePath="$PROJECT_DIR$/Assets/C#/changeScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/changeScene.cs" afterDir="false" />
+    <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="QuizSceneのボタンクリックハンドラーの変更">
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActSelDiff.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActSelDiff.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActTF.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActTF.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActionManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActionManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_ActionManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_ActionManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/action.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/action.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/Quiz.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/Quiz.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +48,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/C#/ActionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.meta.xr.sdk.audio@64.0.0/Runtime/scripts/MetaXRAudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.8/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.management@4.4.1/Runtime/XRGeneralSettings.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,7 +71,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Unity エディターにアタッチ.Unity エディターにアタッチ.executor": "Debug",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "feature/3202",
+    "git-widget-placeholder": "feature/3701",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -174,7 +187,8 @@
       <workItem from="1715771020445" duration="842000" />
       <workItem from="1715788340111" duration="1311000" />
       <workItem from="1715790669964" duration="1729000" />
-      <workItem from="1715845487736" duration="641000" />
+      <workItem from="1715839664286" duration="3187000" />
+
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
@@ -200,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715697938535</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="QuizSceneのボタンクリックハンドラーの変更">
+      <option name="closed" value="true" />
+      <created>1715839751415</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715839751415</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +254,8 @@
     <MESSAGE value="quizの問題文をandroidで選択したdifficultyの値に応じて出題" />
     <MESSAGE value="表示される問題と回答する問題の一致" />
     <MESSAGE value="出題済みクイズを取得しないようにした" />
-    <option name="LAST_COMMIT_MESSAGE" value="出題済みクイズを取得しないようにした" />
+    <MESSAGE value="QuizSceneのボタンクリックハンドラーの変更" />
+    <option name="LAST_COMMIT_MESSAGE" value="QuizSceneのボタンクリックハンドラーの変更" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
