@@ -46,7 +46,6 @@ public class game extends AppCompatActivity {
         WebSocketClient webSocketClient = new WebSocketClient(customCircleView);
         webSocketClient.start();
     }
-    
 
     public void act_setText() {
         apiService.getAct_select().enqueue(new Callback<List<Act_select>>() {
