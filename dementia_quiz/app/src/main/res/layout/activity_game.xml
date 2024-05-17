@@ -56,8 +56,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="200sp"
             android:text="ゲーム中・・・"
             android:textSize="50sp" />
+
 
         <Button
             android:id="@+id/finish_button"
@@ -69,5 +71,20 @@
             android:onClick="game_result"
             android:text="終了"
             android:textSize="40sp" />
+
+        <ImageView
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/map_image" />
+
+
+
+            <jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz.CustomCircleView
+                android:id="@+id/customCircleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
