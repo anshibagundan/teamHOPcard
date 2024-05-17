@@ -1,10 +1,13 @@
 package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.net.URI;
@@ -20,9 +23,11 @@ public class game extends AppCompatActivity {
     private ApiService apiService;
     private TextView act_text;
     private TextView quiz_text;
-    private TextView nowgame;
     private String quiz_diff_text;
     private String act_diff_text;
+    private CustomCircleView customCircleView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +39,13 @@ public class game extends AppCompatActivity {
 
         act_text = findViewById(R.id.act_text);
         quiz_text = findViewById(R.id.quiz_text);
-        nowgame = findViewById(R.id.nowgame);
+        customCircleView = findViewById(R.id.customCircleView);
+
 
         act_setText();
         quiz_setText();
-        WebSocketClient webSocketClient = new WebSocketClient(nowgame);
+        WebSocketClient webSocketClient = new WebSocketClient(customCircleView);
         webSocketClient.start();
-
     }
     
 
@@ -114,4 +119,9 @@ public class game extends AppCompatActivity {
         Intent intent = new Intent(this, result.class);
         startActivity(intent);
     }
+
+
+
+
+
 }

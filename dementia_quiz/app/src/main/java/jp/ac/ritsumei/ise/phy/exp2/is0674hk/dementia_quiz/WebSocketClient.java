@@ -18,9 +18,11 @@ public class WebSocketClient extends WebSocketListener {
     private static final String TAG = "WebSocketClient";
 
     private Handler mainHandler = new Handler(Looper.getMainLooper());
-
-    private TextView nowgame;
     private WebSocket webSocket;
+
+    private CustomCircleView customCircleView;
+
+
 
     public void start() {
         OkHttpClient client = new OkHttpClient();
@@ -29,8 +31,8 @@ public class WebSocketClient extends WebSocketListener {
         client.dispatcher().executorService().shutdown();
     }
 
-    public WebSocketClient(TextView nowgame) {
-        this.nowgame = nowgame;
+    public WebSocketClient(CustomCircleView customCircleView) {
+        this.customCircleView = customCircleView;
     }
 
     @Override
@@ -44,9 +46,12 @@ public class WebSocketClient extends WebSocketListener {
         // JSONをパースして内容を確認する
         try {
             JSONObject json = new JSONObject(text);
-            double x = json.getDouble("x");
-            double z = json.getDouble("z");
-            mainHandler.post(() -> nowgame.setText((int) x + ", " + (int) z)); //y座標はいらんっしょ
+            float x = (float) (((float)json.getDouble("x")+872)*0.145+265);
+            float z = (float) (((float)json.getDouble("z")+966)*(-0.165)+1210);
+            Log.d(TAG,  "x = " + x + " z = " + z);
+            mainHandler.post(() -> {
+                customCircleView.setCirclePosition(x, z);
+            }); //y座標はいらんっしょ
         } catch (JSONException e) {
             Log.e(TAG, "JSON parsing error: " + e.getMessage());
         }
