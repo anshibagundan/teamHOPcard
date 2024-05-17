@@ -27,7 +27,6 @@ public class history extends AppCompatActivity {
         userAdapter = new UserAdapter(this, users);
         ListView userListView = findViewById(R.id.userListView);
         userListView.setAdapter(userAdapter);
-
     }
 
 

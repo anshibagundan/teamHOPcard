@@ -139,7 +139,10 @@ public class result extends AppCompatActivity {
     //perをPOST＋tfデータ削除＋画面遷移
     public void post_per(View view){
         Log.e("percent",String.valueOf(percent));
-        User user =new User(1,percent);
+        List<User> users = databaseHelper.getAllUsers();
+        int Listlength = users.size() + 1;
+        Log.e("percent","length;"+String.valueOf(Listlength));
+        User user =new User(Listlength,percent);
         databaseHelper.insertUser(user);
         apiService.deleteAllQuizTF().enqueue(new Callback<Void>() {
             @Override
