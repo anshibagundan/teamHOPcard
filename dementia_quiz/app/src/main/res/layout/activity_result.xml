@@ -34,16 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="問1"
                 android:textSize="70sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="問2"
-                android:textSize="70sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="問3"
-                android:textSize="70sp"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,18 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="あ"
                 android:textSize="70sp"/>
-            <TextView
-                android:id="@+id/act2_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="い"
-                android:textSize="70sp"/>
-            <TextView
-                android:id="@+id/act3_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="う"
-                android:textSize="70sp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -81,6 +61,17 @@
                 android:layout_height="wrap_content"
                 android:text="問1"
                 android:textSize="70sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="問2"
+                android:textSize="70sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="問3"
+                android:textSize="70sp"/>
+
 
         </LinearLayout>
         <LinearLayout
@@ -94,6 +85,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="あ"
+                android:textSize="70sp"/>
+            <TextView
+                android:id="@+id/quiz2_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="い"
+                android:textSize="70sp"/>
+            <TextView
+                android:id="@+id/quiz3_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="う"
                 android:textSize="70sp"/>
 
         </LinearLayout>
