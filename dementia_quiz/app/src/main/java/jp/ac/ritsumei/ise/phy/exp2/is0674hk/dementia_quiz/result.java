@@ -109,6 +109,7 @@ public class result extends AppCompatActivity {
         }
     }
 
+
     //履歴に残す%の計算
     public void MakeActPercent(boolean act1){
 
@@ -118,7 +119,6 @@ public class result extends AppCompatActivity {
         }
         act_percent=(float) act_count/100;
     }
-
     public void MakeQuizPercent(boolean quiz1,boolean quiz2,boolean quiz3){
         quiz_count=0;
         if (quiz1) {
@@ -136,6 +136,8 @@ public class result extends AppCompatActivity {
         Log.e("quiz_count",String.valueOf(quiz_count));
         quiz_percent=(float)quiz_count/100;
     }
+
+
     //perをPOST＋tfデータ削除＋画面遷移
     public void post_per(View view){
         Log.e("percent",String.valueOf(percent));

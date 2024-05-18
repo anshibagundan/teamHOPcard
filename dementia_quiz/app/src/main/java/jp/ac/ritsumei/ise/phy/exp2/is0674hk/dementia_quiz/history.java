@@ -19,7 +19,6 @@ public class history extends AppCompatActivity {
 
         databaseHelper = new DataBaseHelper(this);
 
-//        long rowID=databaseHelper.insertUser(user);
         // データ取得
         List<User> users = databaseHelper.getAllUsers();
 
