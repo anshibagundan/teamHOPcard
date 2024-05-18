@@ -3,6 +3,7 @@ package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,4 +35,12 @@ public class history extends AppCompatActivity {
         userListView.setAdapter(userAdapter);
 
     }
+
+    // ボタンが押されたときにperとdateを削除するメソッド
+    public void clearPerAndDate(View view) {
+        databaseHelper.clearPerAndDate();
+    }
+
+
+
 }

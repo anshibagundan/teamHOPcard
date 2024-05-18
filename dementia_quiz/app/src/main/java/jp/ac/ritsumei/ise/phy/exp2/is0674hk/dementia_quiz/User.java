@@ -9,8 +9,6 @@ public class User {
             this.id = id;
             this.per = per;
             this.date=date;
-
-
         }
 
         //idを取得するメソッド
