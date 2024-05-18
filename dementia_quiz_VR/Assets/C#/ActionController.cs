@@ -23,17 +23,34 @@ public class ActionController : MonoBehaviour
     private bool isfinalAct = false;
     private bool fullAskedAct = false;
     private Quaternion endRotation;
+    private bool isProcessing = false;
 
     public void Start()
     {
         StartCoroutine(GetData());
     }
 
-    //ボタンを押すとクイズの正解不正解を登録する
-    public void PostActTF(String LorR)
+    private void Update()
     {
-        StartCoroutine(PostData(LorR));
+        if (isProcessing) return;
+
+        // 右コントローラーのボタン入力を検出
+        if (CheckRightControllerButtons())
+        {
+            isProcessing = true;
+            StartCoroutine(PostData("R"));
+        }
+
+        // 左コントローラーのボタン入力を検出
+        if (CheckLeftControllerButtons())
+        {
+            isProcessing = true;
+            StartCoroutine(PostData("L"));
+        }
     }
+
+
+
 
 
     private bool CheckRightControllerButtons()
@@ -205,6 +222,7 @@ public class ActionController : MonoBehaviour
             Debug.LogError("no Act found");
         }
 
+        isProcessing = false;
         SceneManager.LoadScene("TitleScene");
     }
 }

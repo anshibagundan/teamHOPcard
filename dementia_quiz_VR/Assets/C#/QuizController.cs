@@ -27,6 +27,8 @@ public class QuizController : MonoBehaviour
     private bool isfinalQuiz = false;
     private bool fullAskedQuiz = false;
     private Quaternion endRotation;
+    private bool isAnswered = false;
+    private const int maxAttempts = 30;
 
     public void Start()
     {
@@ -36,15 +38,19 @@ public class QuizController : MonoBehaviour
     private void Update()
     {
         // 右コントローラーのボタン入力を検出
-        if (CheckRightControllerButtons())
+        if (CheckRightControllerButtons() && !isAnswered)
         {
+            isAnswered = true;
             StartCoroutine(PostData("R"));
+            StartCoroutine(RotateCoroutine("R"));
         }
 
         // 左コントローラーのボタン入力を検出
-        if (CheckLeftControllerButtons())
+        if (CheckLeftControllerButtons() && !isAnswered)
         {
+            isAnswered = true;
             StartCoroutine(PostData("L"));
+            StartCoroutine(RotateCoroutine("L"));
         }
     }
 
@@ -301,7 +307,7 @@ public class QuizController : MonoBehaviour
         Quaternion startRotation = objectToRotate.transform.rotation;
 
 
-        if (AskedQuestionList.Length == 0 ||AskedQuestionList.Length == 1 )
+        if (AskedQuestionList == null ||AskedQuestionList.Length == 1 )
         {
             if (LorR == "R" )
             {
@@ -345,15 +351,16 @@ public class QuizController : MonoBehaviour
 
         objectToRotate.transform.rotation = endRotation;
         isRotating = false;
+        isAnswered = false;
 
         // 回転後にシーンを読み込む
         if (!isfinalQuiz)
         {
-            SceneManager.LoadScene("New_WalkScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
         else
         {
-            SceneManager.LoadScene("FinalQuizScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
     }
 }
