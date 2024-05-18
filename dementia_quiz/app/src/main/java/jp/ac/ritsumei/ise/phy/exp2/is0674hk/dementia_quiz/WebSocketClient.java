@@ -30,6 +30,13 @@ public class WebSocketClient extends WebSocketListener {
         webSocket = client.newWebSocket(request, this);
         client.dispatcher().executorService().shutdown();
     }
+    public void startGame() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
+        webSocket = client.newWebSocket(request, this);
+        client.dispatcher().executorService().shutdown();
+    }
+
 
     public WebSocketClient(CustomCircleView customCircleView) {
         this.customCircleView = customCircleView;

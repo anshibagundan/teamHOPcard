@@ -27,6 +27,7 @@ public class home extends AppCompatActivity {
     private Button difficult;
     private FrameLayout act_selectDiff;
     private FrameLayout quiz_selectDiff;
+    private FrameLayout wait;
     private WebSocket webSocket;
     private final OkHttpClient client = new OkHttpClient();
 
@@ -43,6 +44,7 @@ public class home extends AppCompatActivity {
         difficult = findViewById(R.id.difficult);
         act_selectDiff = findViewById(R.id.act_selectDiff);
         quiz_selectDiff = findViewById(R.id.quiz_selectDiff);
+        wait=findViewById(R.id.wait);
 
         // WebSocket接続を確立
         startWebSocket();
@@ -97,9 +99,8 @@ public class home extends AppCompatActivity {
                 Log.e("setDifficulty", "connection_fail");
             }
         });
-
-        Intent intent = new Intent(this, game.class);
-        startActivity(intent);
+        wait.setVisibility(View.VISIBLE);
+        quiz_selectDiff.setVisibility(View.GONE);
     }
 
     // アクションの難易度をPOST＋画面遷移
