@@ -15,8 +15,8 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
-import okhttp3.Response;
+
+
 
 public class home extends AppCompatActivity {
 
@@ -44,14 +44,13 @@ public class home extends AppCompatActivity {
         quiz_selectDiff=findViewById(R.id.quiz_selectDiff);
         easy.setOnClickListener(v -> startWebSocket());
     }
-
     private void startWebSocket() {
         Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
         webSocket = client.newWebSocket(request, new WebSocketListener() {
             @Override
-            public void onOpen(WebSocket webSocket, Response response) {
+            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
                 super.onOpen(webSocket, response);
-                webSocket.send("{{startOK}}");
+                webSocket.send("{'start': 'OK'}");
             }
         });
 
@@ -62,7 +61,7 @@ public class home extends AppCompatActivity {
         Quiz_select data =new Quiz_select(1,1);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if(response.isSuccessful()){
                     Log.d("setEasy","success");
                 }else{
@@ -81,7 +80,7 @@ public class home extends AppCompatActivity {
         Quiz_select data=new Quiz_select(1,2);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.isSuccessful()){
                     Log.d("setNormal","success");
                 }else {
@@ -100,7 +99,7 @@ public class home extends AppCompatActivity {
         Quiz_select data=new Quiz_select(1,3);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.isSuccessful()){
                     Log.d("setDifficult","success");
                 }else {
@@ -121,7 +120,7 @@ public class home extends AppCompatActivity {
         Act_select data =new Act_select(1,1);
         apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if(response.isSuccessful()){
                     Log.d("set_actEasy","success");
                 }else{
@@ -140,7 +139,7 @@ public class home extends AppCompatActivity {
         Act_select data =new Act_select(1,2);
         apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if(response.isSuccessful()){
                     Log.d("set_actNormal","success");
                 }else{
@@ -159,7 +158,7 @@ public class home extends AppCompatActivity {
         Act_select data = new Act_select(1, 3);
         apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d("set_actDifficult", "success");
                 } else {
