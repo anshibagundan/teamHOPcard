@@ -3,11 +3,13 @@ package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 public class User {
         private int id;
         private float per;
-        private String email;
+        private String date;
 
-        public User(int id, float per) {
+        public User(int id, float per, String date) {
             this.id = id;
             this.per = per;
+            this.date=date;
+
 
         }
 
@@ -22,8 +24,8 @@ public class User {
         }
 
         //emailを取得するメソッド
-        public String getEmail() {
-            return email;
+        public String getDate() {
+            return date;
         }
 
         //idを更新するメソッド

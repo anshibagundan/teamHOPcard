@@ -45,6 +45,7 @@ public class UserAdapter extends BaseAdapter {
         TextView text1 = convertView.findViewById(android.R.id.text1);
         TextView text2 = convertView.findViewById(android.R.id.text2);
         text1.setText(String.valueOf(user.getPer())+"%");
+        text2.setText(user.getDate());
 
 
         return convertView;

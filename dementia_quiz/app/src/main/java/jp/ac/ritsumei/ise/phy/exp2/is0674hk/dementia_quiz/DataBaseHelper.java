@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME_USERS = "users"; //生成するテーブル名
     private static final String USERS_COLUMN_ID = "id"; // テーブル内の属性1
     private static final String USERS_COLUMN_PER = "per";// テーブル内の属性2
+    private static final String USERS_COLUMN_DATE = "date";// テーブル内の属性3
 
 
 
@@ -31,7 +32,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTableQuery = "CREATE TABLE " + TABLE_NAME_USERS + " (" +
                 USERS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                USERS_COLUMN_PER + " TEXT)";
+                USERS_COLUMN_PER + " TEXT, " +
+                USERS_COLUMN_DATE + " TEXT)";
         db.execSQL(createTableQuery);
     }
 
@@ -50,8 +52,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndexOrThrow(USERS_COLUMN_ID));
             float per = cursor.getFloat(cursor.getColumnIndexOrThrow(USERS_COLUMN_PER));
-
-            users.add(new User(id, per));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(USERS_COLUMN_DATE));
+            users.add(new User(id, per,date));
         }Log.e("getall",String.valueOf(users));
         cursor.close();
         db.close();
