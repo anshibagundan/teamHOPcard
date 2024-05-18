@@ -41,7 +41,7 @@ public partial class @InputMove: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""db54eb9e-ebbc-46f9-b974-6b1f59fdafdf"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

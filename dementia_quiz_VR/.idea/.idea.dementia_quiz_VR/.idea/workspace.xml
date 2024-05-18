@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="QuizSceneのボタンクリックハンドラーの変更">
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActSelDiff.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActSelDiff.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActTF.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActTF.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActionManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ActionManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_ActionManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_ActionManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/action.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/action.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OVRCameraRig.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OVRCameraRig.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OVRRuntimeControllerPrefab.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OVRRuntimeControllerPrefab.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/Quiz.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/Quiz.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputMove.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputMove.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/first_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,29 +68,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Unity エディターにアタッチ.Unity エディターにアタッチ.executor&quot;: &quot;Debug&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/3701&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Unity エディターにアタッチ.Unity エディターにアタッチ.executor": "Debug",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "dev/Unity",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/Users/taramanjimacbookpro/Library/Application Support/Symbols/src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/Users/taramanjimacbookpro/Library/Application Support/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/Users/taramanjimacbookpro/Library/Application Support/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="ユニットテスト (バッチモード)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2022.3.5f1/Unity.app/Contents/MacOS/Unity" />
@@ -188,6 +191,7 @@
       <workItem from="1715788340111" duration="1311000" />
       <workItem from="1715790669964" duration="1729000" />
       <workItem from="1715839664286" duration="3187000" />
+      <workItem from="1716021198984" duration="5431000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
