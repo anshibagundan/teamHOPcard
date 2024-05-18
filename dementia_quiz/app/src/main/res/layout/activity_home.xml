@@ -8,9 +8,9 @@
 
 
 
-<!--    Action難易度-->
+<!--    Quiz難易度-->
         <FrameLayout
-            android:id="@+id/act_selectDiff"
+            android:id="@+id/quiz_selectDiff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#E6F9FE"
@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="walking難易度"
+                android:text="quiz難易度"
                 android:textSize="40sp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="150dp" />
@@ -35,34 +35,31 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/easy_walk"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#990000"
                     android:text="簡単"
                     android:textSize="40sp"
-                    android:onClick="set_actEasy"
+                    android:onClick="set_quizEasy"
                     />
 
                 <Button
-                    android:id="@+id/normal_walk"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="普通"
                     android:textSize="40sp"
-                    android:onClick="set_actNormal"/>
+                    android:onClick="set_quizNormal"/>
 
                 <Button
-                    android:id="@+id/difficult_walk"
                     android:layout_width="180sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40sp"
                     android:backgroundTint="#9900"
                     android:text="難しい"
                     android:textSize="40sp"
-                    android:onClick="set_actDifficult"/>
+                    android:onClick="set_quizDifficult"/>
             </LinearLayout>
             <!--星1列目-->
             <LinearLayout
@@ -141,9 +138,9 @@
 
         </FrameLayout>
 
-<!--    Quiz難易度-->
+<!--    Action難易度-->
         <FrameLayout
-        android:id="@+id/quiz_selectDiff"
+        android:id="@+id/act_selectDiff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E6F9FE"
@@ -152,7 +149,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="quiz難易度"
+            android:text="act難易度"
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp" />
@@ -174,7 +171,7 @@
                 android:backgroundTint="#990000"
                 android:text="簡単"
                 android:textSize="40sp"
-                android:onClick="set_quizEasy"
+                android:onClick="set_actEasy"
                 />
 
             <Button
@@ -185,7 +182,7 @@
                 android:backgroundTint="#9900"
                 android:text="普通"
                 android:textSize="40sp"
-                android:onClick="set_quizNormal"/>
+                android:onClick="set_actNormal"/>
 
             <Button
                 android:id="@+id/difficult"
@@ -195,7 +192,7 @@
                 android:backgroundTint="#9900"
                 android:text="難しい"
                 android:textSize="40sp"
-                android:onClick="set_quizDifficult"/>
+                android:onClick="set_actDifficult"/>
         </LinearLayout>
         <!--星1列目-->
         <LinearLayout

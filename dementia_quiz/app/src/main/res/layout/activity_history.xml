@@ -11,13 +11,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="履歴"
+            android:textSize="50sp"
+            android:layout_gravity="center"/>
         <ListView
             android:id="@+id/userListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="600sp" />
+
+        <Button
+            android:id="@+id/delete_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="履歴削除"
+            android:layout_gravity="center"
+            android:onClick="clearPerAndDate"/>
 
 
     </LinearLayout>
+
+
 
 
 

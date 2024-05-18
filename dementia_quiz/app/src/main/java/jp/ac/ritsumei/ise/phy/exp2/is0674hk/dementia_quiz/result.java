@@ -1,15 +1,22 @@
 package jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz;
 
+import static jp.ac.ritsumei.ise.phy.exp2.is0674hk.dementia_quiz.history.adapter;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +33,9 @@ public class result extends AppCompatActivity {
     private TextView quiz2_text;
     private TextView quiz3_text;
     private DataBaseHelper databaseHelper;
+    public static ArrayList<String> dateList;
+    private String date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +119,7 @@ public class result extends AppCompatActivity {
         }
     }
 
+
     //履歴に残す%の計算
     public void MakeActPercent(boolean act1){
 
@@ -118,7 +129,6 @@ public class result extends AppCompatActivity {
         }
         act_percent=(float) act_count/100;
     }
-
     public void MakeQuizPercent(boolean quiz1,boolean quiz2,boolean quiz3){
         quiz_count=0;
         if (quiz1) {
@@ -136,14 +146,21 @@ public class result extends AppCompatActivity {
         Log.e("quiz_count",String.valueOf(quiz_count));
         quiz_percent=(float)quiz_count/100;
     }
+
+
     //perをPOST＋tfデータ削除＋画面遷移
     public void post_per(View view){
         Log.e("percent",String.valueOf(percent));
         List<User> users = databaseHelper.getAllUsers();
         int Listlength = users.size() + 1;
+        // 現在の日付を取得
+        date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
         Log.e("percent","length;"+String.valueOf(Listlength));
-        User user =new User(Listlength,percent);
+        User user =new User(Listlength,percent,date);
         databaseHelper.insertUser(user);
+
+
+
         apiService.deleteAllQuizTF().enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
