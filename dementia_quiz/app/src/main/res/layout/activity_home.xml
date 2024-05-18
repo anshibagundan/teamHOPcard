@@ -140,6 +140,7 @@
             </LinearLayout>
 
         </FrameLayout>
+
 <!--    Quiz難易度-->
         <FrameLayout
         android:id="@+id/quiz_selectDiff"
@@ -155,6 +156,7 @@
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp" />
+
         <!--ボタンセレクト-->
         <LinearLayout
             android:layout_width="334dp"
@@ -270,23 +272,6 @@
                 android:layout_marginTop="50sp"/>
         </LinearLayout>
 
-
-
-    </FrameLayout>
-<!--    ポップアップ-->
-        <FrameLayout
-        android:id="@+id/wait"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="ちょいまち"
-            android:background="#aaaaaa"
-            android:textSize="40sp"
-            android:gravity="center"/>
     </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
