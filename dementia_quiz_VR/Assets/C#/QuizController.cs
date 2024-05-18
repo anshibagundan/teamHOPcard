@@ -19,7 +19,7 @@ public class QuizController : MonoBehaviour
     private const string baseGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
     private const string posturl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-tfs/";
     private int difficulty = 1;
-    private String geturl = "";
+    private String geturl;
     private int randomIndex = 1;
     private int quizDataId = 1;
     private int[] AskedQuestionList;
@@ -39,20 +39,12 @@ public class QuizController : MonoBehaviour
         if (CheckRightControllerButtons())
         {
             StartCoroutine(PostData("R"));
-            if (!isRotating)
-            {
-                StartCoroutine(RotateCoroutine("R"));
-            }
         }
 
         // 左コントローラーのボタン入力を検出
         if (CheckLeftControllerButtons())
         {
             StartCoroutine(PostData("L"));
-            if (!isRotating)
-            {
-                StartCoroutine(RotateCoroutine("l"));
-            }
         }
     }
 

@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2e227e-df85-49df-b4dd-0c6f5eee16c1" name="変更" comment="QuizSceneのボタンクリックハンドラーの変更">
-      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/C#/QuizController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OVRCameraRig.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OVRCameraRig.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OVRRuntimeControllerPrefab.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OVRRuntimeControllerPrefab.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/C#/ActionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dementia_quiz_VR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputMove.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputMove.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/New_WalkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/ActionController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_QuizManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/ButtonClickHandler_QuizManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/QuizController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/QuizController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalQuizScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/QuizScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TitleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/first_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/first_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +68,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Unity エディターにアタッチ.Unity エディターにアタッチ.executor": "Debug",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "dev/Unity",
+    "git-widget-placeholder": "#47 on feature/3802",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -192,6 +186,7 @@
       <workItem from="1715790669964" duration="1729000" />
       <workItem from="1715839664286" duration="3187000" />
       <workItem from="1716021198984" duration="5431000" />
+      <workItem from="1716042346092" duration="1335000" />
     </task>
     <task id="LOCAL-00001" summary="quizの問題文をandroidで選択したdifficultyの値に応じて出題">
       <option name="closed" value="true" />
