@@ -81,20 +81,20 @@ public class home extends AppCompatActivity {
         webSocket.send(jsonObject.toString());
         webSocket.close(1000, null);
 
-        Quiz_select data = new Quiz_select(1, difficulty);
-        apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
+        Act_select data = new Act_select(1, difficulty);
+        apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.d("setDifficulty", "success");
+                    Log.d("actDifficulty", "success");
                 } else {
-                    Log.e("setDifficulty", "fail");
+                    Log.e("actDifficulty", "fail");
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("setDifficulty", "connection_fail");
+                Log.e("actDifficulty", "connection_fail");
             }
         });
 
@@ -102,37 +102,37 @@ public class home extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // アクションの難易度をPOST＋画面遷移
-    public void set_actDifficulty(View view, int difficulty) {
-        Act_select data = new Act_select(1, difficulty);
-        apiService.insertAct_selectData(data).enqueue(new Callback<Void>() {
+    // クイズの難易度をPOST＋画面遷移
+    public void set_quizDifficulty(View view, int difficulty) {
+        Quiz_select data = new Quiz_select(1, difficulty);
+        apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.d("set_actDifficulty", "success");
+                    Log.d("set_quizDifficulty", "success");
                 } else {
-                    Log.e("set_actDifficulty", "fail");
+                    Log.e("set_quizDifficulty", "fail");
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("set_actDifficulty", "connection_fail");
+                Log.e("set_quizDifficulty", "connection_fail");
             }
         });
-        act_selectDiff.setVisibility(View.GONE);
-        quiz_selectDiff.setVisibility(View.VISIBLE);
+        quiz_selectDiff.setVisibility(View.GONE);
+        act_selectDiff.setVisibility(View.VISIBLE);
     }
 
-    public void set_actEasy(View view) {
-        set_actDifficulty(view, 1);
+    public void set_quizEasy(View view) {
+        set_quizDifficulty(view, 1);
     }
 
-    public void set_actNormal(View view) {
-        set_actDifficulty(view, 2);
+    public void set_quizNormal(View view) {
+        set_quizDifficulty(view, 2);
     }
 
-    public void set_actDifficult(View view) {
-        set_actDifficulty(view, 3);
+    public void set_quizDifficult(View view) {
+        set_quizDifficulty(view, 3);
     }
 }
