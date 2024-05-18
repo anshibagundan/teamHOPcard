@@ -27,6 +27,7 @@ public class game extends AppCompatActivity {
     private String act_diff_text;
     private CustomCircleView customCircleView;
     private int quizSize,actSize;
+    private TextView nowgame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,9 @@ public class game extends AppCompatActivity {
 
         act_text = findViewById(R.id.act_text);
         quiz_text = findViewById(R.id.quiz_text);
+        nowgame=findViewById(R.id.nowgame);
         customCircleView = findViewById(R.id.customCircleView);
+
 
 
         act_setText();
@@ -145,6 +148,8 @@ public class game extends AppCompatActivity {
                     if (actSize==1&&quizSize==3){
                         Intent intent =new Intent(game.this,result.class);
                         startActivity(intent);
+                    }else{
+                        nowgame.setText("クイズが終了していません！");
                     }
                 }else{
                     //エラー時ハンドリング
