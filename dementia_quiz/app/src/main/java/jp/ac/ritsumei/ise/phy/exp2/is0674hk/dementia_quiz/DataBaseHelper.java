@@ -58,7 +58,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return users;
     }
     //データベースにユーザーデータをPOSTするメソッド
-    public String insertUser(User user) {
+    public long insertUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(USERS_COLUMN_ID, user.getId());
@@ -66,7 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long rowId = db.insert(TABLE_NAME_USERS, null, values);
         db.close();
-        return rowId+"%";
+        return rowId;
     }
 
 
