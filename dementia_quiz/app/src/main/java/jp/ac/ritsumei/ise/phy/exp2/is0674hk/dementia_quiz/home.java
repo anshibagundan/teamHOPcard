@@ -50,20 +50,28 @@ public class home extends AppCompatActivity {
 
     // quiz難易度選択すると画面遷移＋json送信
     private void startWebSocket(int difficulty) {
-        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
-        webSocket = client.newWebSocket(request, new WebSocketListener() {
-            @Override
-            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
-                super.onOpen(webSocket, response);
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("start", "OK");
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        private void startWebSocket(int difficulty) {
+            Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
+            webSocket = client.newWebSocket(request, new WebSocketListener() {
+        @Override
+        public void onOpen(WebSocket webSocket, okhttp3.Response response) {
+            super.onOpen(webSocket, response);
+            // 接続が確立された後、少し遅延を入れてからデータを送信する
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("start", "OK");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    webSocket.send(jsonObject.toString());
                 }
-                webSocket.send(jsonObject.toString());
-            }
-        });
+            }, 1000); // 1秒の遅延を入れる（適宜調整してください）
+        }
+    });
 
         Quiz_select data = new Quiz_select(1, difficulty);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
