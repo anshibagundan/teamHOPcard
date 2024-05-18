@@ -42,22 +42,20 @@ public class home extends AppCompatActivity {
         difficult=findViewById(R.id.difficult);
         act_selectDiff=findViewById(R.id.act_selectDiff);
         quiz_selectDiff=findViewById(R.id.quiz_selectDiff);
-        easy.setOnClickListener(v -> startWebSocket());
+        easy.setOnClickListener(v -> startWebSocket_easy());
+        normal.setOnClickListener(v -> startWebSocket_normal());
+        difficult.setOnClickListener(v -> startWebSocket_difficult());
     }
-    private void startWebSocket() {
+    //quiz難易度選択すると画面遷移＋json送信
+    private void startWebSocket_easy() {
         Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
         webSocket = client.newWebSocket(request, new WebSocketListener() {
             @Override
             public void onOpen(WebSocket webSocket, okhttp3.Response response) {
                 super.onOpen(webSocket, response);
-                webSocket.send("{'start': 'OK'}");
+                webSocket.send("{\"start\": \"OK\"}");
             }
         });
-
-
-    }
-//クイズの難易度をPOST＋画面遷移
-    public void set_quizEasy(View view){
         Quiz_select data =new Quiz_select(1,1);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
@@ -76,7 +74,15 @@ public class home extends AppCompatActivity {
         Intent intent = new Intent(this, game.class);
         startActivity(intent);
     }
-    public void set_quizNormal(View view){
+    private void startWebSocket_normal() {
+        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
+        webSocket = client.newWebSocket(request, new WebSocketListener() {
+            @Override
+            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
+                super.onOpen(webSocket, response);
+                webSocket.send("{\"start\": \"OK\"}");
+            }
+        });
         Quiz_select data=new Quiz_select(1,2);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
@@ -94,8 +100,17 @@ public class home extends AppCompatActivity {
         });
         Intent intent = new Intent(this,game.class);
         startActivity(intent);
+
     }
-    public void set_quizDifficult(View view){
+    private void startWebSocket_difficult() {
+        Request request = new Request.Builder().url("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/start/").build();
+        webSocket = client.newWebSocket(request, new WebSocketListener() {
+            @Override
+            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
+                super.onOpen(webSocket, response);
+                webSocket.send("{\"start\": \"OK\"}");
+            }
+        });
         Quiz_select data=new Quiz_select(1,3);
         apiService.insertQuiz_selectData(data).enqueue(new Callback<Void>() {
             @Override
@@ -114,6 +129,7 @@ public class home extends AppCompatActivity {
         Intent intent = new Intent(this,game.class);
         startActivity(intent);
     }
+
 
 //アクションの難易度をPOST＋画面遷移
     public void set_actEasy(View view){
