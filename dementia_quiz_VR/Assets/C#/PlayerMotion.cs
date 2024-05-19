@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.XR;
 
 public class PlayerMotion : MonoBehaviour
@@ -9,6 +10,13 @@ public class PlayerMotion : MonoBehaviour
     [SerializeField] private Transform LeftHandAnchorTransform = null;
     [SerializeField] private Transform RightHandAnchorTransform = null;
     private CharacterController Controller;
+    private String geturl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-tfs/";
+
+    //回転
+    public GameObject objectToRotate;
+    public float rotationDuration = 1f;
+    private Quaternion endRotation;
+    private bool Rotated = false;
 
     // 移動に関するパラメータ
     private Vector3 MoveThrottle = Vector3.zero;
@@ -32,6 +40,13 @@ public class PlayerMotion : MonoBehaviour
     const float WALK_THRESHOLD = 0.8f;
     const float RUN_THRESHOLD = 1.3f;
     public float moveScale = 0.3f;
+    private bool QuizTFData1;
+    private bool QuizTFData2;
+    private bool QuizTFData3;
+    private int QuizIdData1;
+    private int QuizIdData2;
+    private int QuizIdData3;
+    private QuizTF[] QuizTFDataArray;
 
     private void Start()
     {
@@ -110,11 +125,34 @@ public class PlayerMotion : MonoBehaviour
         bool isWalk = DetectHandShakeWalk(Math.Abs(handShakeVel.y)) || motionInertia;
         if (isWalk)
         {
-            if (!motionInertia)
+            if (!motionInertia){}
                 SetMotionInertia();
 
             // ワールド座標のx軸方向にのみ移動するように設定
-            tmpMoveThrottle += Vector3.right * moveScale;
+            //rightはX正 leftがX負 forwardがZ軸正 backZ負方向でした．
+            //idが奇数でtrueなら左に，偶数でtrueなら右にします
+            Getdirection();
+
+            //1問も解いていない時
+            if (QuizTFDataArray == null)
+            {
+                tmpMoveThrottle += Vector3.right * moveScale;
+            }
+
+            //1問解いたあとおそらくZ軸正負固定になるよね
+            //もしidが偶数なら
+
+            if (QuizIdData1 % 2 == 0 && QuizTFData1)
+            {
+                if (!Rotated)
+                {
+                    RotateCoroutine("R");
+                }
+
+                tmpMoveThrottle += Vector3.back * moveScale;
+            }
+
+
 
             // 走行状態かどうかを判定
             bool isRun = DetectHandShakeRun(Math.Abs(handShakeVel.y));
@@ -205,5 +243,84 @@ public class PlayerMotion : MonoBehaviour
         // 予測移動量と実際の移動量が異なる場合は、MoveThrottleを調整
         if (predictedXZ != actualXZ)
             MoveThrottle += (actualXZ - predictedXZ) / (SimulationRate * Time.deltaTime);
+    }
+
+
+    private IEnumerator Getdirection()
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(geturl))
+        {
+            webRequest.SetRequestHeader("X-Debug-Mode", "true");
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError("Error: " + webRequest.error);
+            }
+            else
+            {
+                string json = webRequest.downloadHandler.text;
+
+                QuizTFDataArray = JsonHelper.FromJson<QuizTF>(json);
+
+                if (QuizTFDataArray != null && QuizTFDataArray.Length > 0)
+                {
+                    QuizTFData1 = QuizTFDataArray[0].getCor();
+                    QuizIdData1 = QuizTFDataArray[0].getId();
+
+                    if (QuizTFDataArray.Length > 1)
+                    {
+                        QuizTFData2 = QuizTFDataArray[1].getCor();
+                        QuizIdData2 = QuizTFDataArray[2].getId();
+                    }
+
+                    //3問目いらないならこれいらんくない？
+                    if (QuizTFDataArray.Length > 2)
+                    {
+                        QuizTFData3 = QuizTFDataArray[2].getCor();
+                        QuizIdData3 = QuizTFDataArray[3].getId();
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning("No quizdiff found.");
+                }
+            }
+        }
+    }
+    //回転用
+    IEnumerator RotateCoroutine(String LorR)
+    {
+        Quaternion startRotation = objectToRotate.transform.rotation;
+
+        if (LorR == "R")
+        {
+            endRotation = startRotation * Quaternion.Euler(0, 90, 0);
+        }
+        else if (LorR == "L")
+        {
+            endRotation = startRotation * Quaternion.Euler(0, -90, 0);
+        }
+        else
+        {
+            endRotation = startRotation * Quaternion.Euler(0, 0, 0);
+        }
+
+
+
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < rotationDuration)
+        {
+            objectToRotate.transform.rotation =
+                Quaternion.Slerp(startRotation, endRotation, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        objectToRotate.transform.rotation = endRotation;
+        Rotated = true;
     }
 }
