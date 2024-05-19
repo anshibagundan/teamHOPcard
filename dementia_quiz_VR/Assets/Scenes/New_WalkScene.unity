@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35290605, g: 0.72563136, b: 0.96273816, a: 1}
+  m_IndirectSpecularColor: {r: 0.35379204, g: 0.72330034, b: 0.9528675, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28632,11 +28632,11 @@ GameObject:
   - component: {fileID: 805662255}
   - component: {fileID: 805662254}
   - component: {fileID: 805662253}
-  - component: {fileID: 805662252}
   - component: {fileID: 805662259}
   - component: {fileID: 805662258}
   - component: {fileID: 805662257}
   - component: {fileID: 805662260}
+  - component: {fileID: 805662261}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -28660,19 +28660,6 @@ Transform:
   - {fileID: 1567831944}
   m_Father: {fileID: 1100317130}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &805662252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805662249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd55f2a0ec49e154d9b976032b3ffe4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 200
 --- !u!54 &805662253
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28683,7 +28670,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -28827,6 +28814,18 @@ MonoBehaviour:
   moveSpeed: 2
   numberOfDogs: 1
   rotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &805662261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805662249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cb5c9dfbe3c4ae687a2c89ccaf95f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &807722712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51774,7 +51773,6 @@ GameObject:
   - component: {fileID: 1567831946}
   - component: {fileID: 1567831945}
   - component: {fileID: 1567831949}
-  - component: {fileID: 1567831950}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -52008,29 +52006,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567831943}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddce6d350469a4cf5b9c6f8ae65126b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   websocketUrl: wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/
---- !u!114 &1567831950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567831943}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbd42bfe114f41848e5c4ce8169100d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LeftHandAnchorTransform: {fileID: 324457215}
-  RightHandAnchorTransform: {fileID: 869345448}
-  objectToRotate: {fileID: 0}
-  rotationDuration: 1
-  moveScale: 0.3
 --- !u!1001 &1568113983
 PrefabInstance:
   m_ObjectHideFlags: 0
