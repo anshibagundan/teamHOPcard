@@ -16,7 +16,7 @@ public class PlayerMotion : MonoBehaviour
     public GameObject objectToRotate;
     public float rotationDuration = 1f;
     private Quaternion endRotation;
-    private bool Rotated = true;
+    private bool Rotated = false;
 
     // 移動に関するパラメータ
     private Vector3 MoveThrottle = Vector3.zero;
@@ -139,211 +139,238 @@ public class PlayerMotion : MonoBehaviour
                 tmpMoveThrottle += Vector3.right * moveScale;
             }
 
-            //1問解いたあとおそらくZ軸正負固定になるよね
-            //もしidが偶数なら
-
             //1問目を解いたことありますか、左の時
-            else if ((QuizIdData1 % 2 == 0 && QuizTFData1)||(Quizdata1%==1&& !QuizTFData1)){
+            else if ((QuizIdData1 % 2 == 0 && QuizTFData1) || (QuizIdData1 % 2 == 1 && !QuizTFData1))
+            {
                 //1問目をといた直後ですか
-                if(QuizTFDataArray.Length==1){
+                if (QuizTFDataArray.Length == 1)
+                {
                     //1回目に呼び出された後ですか
                     if (Rotated)
-                        {
-                            RotateCoroutine("L");
-                            
-                        }
+                    {
+                        RotateCoroutine("L");
+
+                    }
 
                     tmpMoveThrottle += Vector3.forward * moveScale;
                 }
-                
+
                 //2問目を解いたことありますか、右の時
-                else if ((QuizIdData2 % 2 == 1 && QuizTFData2)||(Quizdata2%==0&& !QuizTFData2)){
+                else if ((QuizIdData2 % 2 == 1 && QuizTFData2) || (QuizIdData2 % 2 == 0 && !QuizTFData2))
+                {
                     //2問目をといた直後ですか
-                    if(QuizTFDataArray.Length==2){
+                    if (QuizTFDataArray.Length == 2)
+                    {
                         //1回目に呼び出された後ですか
                         if (Rotated)
-                            {
-                                RotateCoroutine("R");
-                                
-                            }
-
-                        tmpMoveThrottle += Vector3.right * moveScale;
-                    }
-
-                    //3問目を解いたことありますか、左の時
-                    else if ((QuizIdData3 % 2 == 0 && QuizTFData3)||(Quizdata3%==1&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("L");
-                                    
-                                }
-
-                            tmpMoveThrottle += Vector3.left * moveScale;
-                        }
-                    //3問目を解いたことありますか、直進の時
-                    else if ((QuizIdData3 % 2 == 1 && QuizTFData3)||(Quizdata3%==0&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("F");
-                                    
-                                }
-
-                            tmpMoveThrottle += Vector3.right * moveScale;
-                        }
-                    }
-                }
-                //2問目をといたことありますか、左の時
-                else if ((QuizIdData2 % 2 == 0 && QuizTFData2)||(Quizdata2%==1&& !QuizTFData2)){
-                    //2問目をといた直後ですか
-                    if(QuizTFDataArray.Length==2){
-                        //1回目に呼び出された後ですか
-                        if (Rotated)
-                            {
-                                RotateCoroutine("L");
-                                
-                            }
-
-                        tmpMoveThrottle += Vector3.left * moveScale;
-                    }
-                    //3問目を解いたことありますか、直進の時
-                    else if ((QuizIdData3 % 2 == 1 && QuizTFData3)||(Quizdata3%==0&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("F");
-                                    
-                                }
-
-                            tmpMoveThrottle += Vector3.right * moveScale;
-                        }
-                    }
-                    //3問目を解いたことありますか、左の時
-                    else if ((QuizIdData3 % 2 == 0 && QuizTFData3)||(Quizdata3%==1&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("L");
-                                    
-                                }
-
-                            tmpMoveThrottle += Vector3.back * moveScale;
-                        }
-                    }
-                }
-                
-
-                
-            }
-
-            //1問目を解いたことありますか、右の時
-            else if((QuizIdData1 % 2 == 1 && QuizTFData1)||(Quizdata1%==0&& !QuizTFData1)){
-
-                //1問目をといた直後ですか
-                if(QuizTFDataArray.Length==1){
-                    //1回目に呼び出された後ですか
-                    if (Rotated)
                         {
                             RotateCoroutine("R");
-                            
-                        }
 
-                    tmpMoveThrottle += Vector3.forward * moveScale;
-                }
-                //2問目を解いたことありますか、左の時
-                else if ((QuizIdData2 % 2 == 0 && QuizTFData2)||(Quizdata2%==1&& !QuizTFData2)){
-                    //2問目をといた直後ですか
-                    if(QuizTFDataArray.Length==2){
-                        //1回目に呼び出された後ですか
-                        if (Rotated)
-                            {
-                                RotateCoroutine("L");
-                                
-                            }
+                        }
 
                         tmpMoveThrottle += Vector3.right * moveScale;
                     }
-                    //3問目を解いたことありますか、直進の時
-                    else if ((QuizIdData3 % 2 == 1 && QuizTFData3)||(Quizdata3%==0&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("F");
-                                    
-                                }
 
-                            tmpMoveThrottle += Vector3.right * moveScale;
-                        }
-                    }
                     //3問目を解いたことありますか、左の時
-                    else if ((QuizIdData3 % 2 == 0 && QuizTFData3)||(Quizdata3%==1&& !QuizTFData3)){
+                    else if ((QuizIdData3 % 2 == 0 && QuizTFData3) || (QuizIdData3 % 2 == 1 && !QuizTFData3))
+                    {
                         //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
+                        if (QuizTFDataArray.Length == 3)
+                        {
                             //1回目に呼び出された後ですか
                             if (Rotated)
-                                {
-                                    RotateCoroutine("L");
-                                    
-                                }
-
-                            tmpMoveThrottle += Vector3.forward * moveScale;
-                        }
-                    }
-                }
-                //2問目を解いたことありますか、右の時
-                else if((QuizIdData2 % 2 == 1 && QuizTFData2)||(Quizdata2%==0&& !QuizTFData2)){
-                    //2問目をといた直後ですか
-                    if(QuizTFDataArray.Length==2){
-                        //1回目に呼び出された後ですか
-                        if (Rotated)
                             {
-                                RotateCoroutine("R");
-                                
-                            }
+                                RotateCoroutine("L");
 
-                        tmpMoveThrottle += Vector3.left * moveScale;
-                    }
-                    //3問目を解いたことありますか、直進の時
-                    else if ((QuizIdData3 % 2 == 1 && QuizTFData3)||(Quizdata3%==0&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
-                                {
-                                    RotateCoroutine("F");
-                                    
-                                }
+                            }
 
                             tmpMoveThrottle += Vector3.left * moveScale;
                         }
-                    }
-                    //3問目を解いたことありますか、左の時
-                    else if ((QuizIdData3 % 2 == 0 && QuizTFData3)||(Quizdata3%==1&& !QuizTFData3)){
-                        //3問目をといた直後ですか
-                        if(QuizTFDataArray.Length==3){
-                            //1回目に呼び出された後ですか
-                            if (Rotated)
+                        //3問目を解いたことありますか、直進の時
+                        else if ((QuizIdData3 % 2 == 1 && QuizTFData3) || (QuizIdData3 % 2 == 0 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
                                 {
-                                    RotateCoroutine("L");
-                                    
+                                    RotateCoroutine("F");
+
                                 }
 
-                            tmpMoveThrottle += Vector3.back * moveScale;
+                                tmpMoveThrottle += Vector3.right * moveScale;
+                            }
+                        }
+                    }
+                    //2問目をといたことありますか、左の時
+                    else if ((QuizIdData2 % 2 == 0 && QuizTFData2) || (QuizIdData2 % 2 == 1 && !QuizTFData2))
+                    {
+                        //2問目をといた直後ですか
+                        if (QuizTFDataArray.Length == 2)
+                        {
+                            //1回目に呼び出された後ですか
+                            if (Rotated)
+                            {
+                                RotateCoroutine("L");
+
+                            }
+
+                            tmpMoveThrottle += Vector3.left * moveScale;
+                        }
+                        //3問目を解いたことありますか、直進の時
+                        else if ((QuizIdData3 % 2 == 1 && QuizTFData3) || (QuizIdData3 % 2 == 0 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("F");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.right * moveScale;
+                            }
+                        }
+                        //3問目を解いたことありますか、左の時
+                        else if ((QuizIdData3 % 2 == 0 && QuizTFData3) || (QuizIdData3 % 2 == 1 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("L");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.back * moveScale;
+                            }
+                        }
+                    }
+
+
+
+                }
+
+                //1問目を解いたことありますか、右の時
+                else if ((QuizIdData1 % 2 == 1 && QuizTFData1) || (QuizIdData1 % 2 == 0 && !QuizTFData1))
+                {
+
+                    //1問目をといた直後ですか
+                    if (QuizTFDataArray.Length == 1)
+                    {
+                        //1回目に呼び出された後ですか
+                        if (Rotated)
+                        {
+                            RotateCoroutine("R");
+
+                        }
+
+                        tmpMoveThrottle += Vector3.forward * moveScale;
+                    }
+                    //2問目を解いたことありますか、左の時
+                    else if ((QuizIdData2 % 2 == 0 && QuizTFData2) || (QuizIdData2 % 2 == 1 && !QuizTFData2))
+                    {
+                        //2問目をといた直後ですか
+                        if (QuizTFDataArray.Length == 2)
+                        {
+                            //1回目に呼び出された後ですか
+                            if (Rotated)
+                            {
+                                RotateCoroutine("L");
+
+                            }
+
+                            tmpMoveThrottle += Vector3.right * moveScale;
+                        }
+                        //3問目を解いたことありますか、直進の時
+                        else if ((QuizIdData3 % 2 == 1 && QuizTFData3) || (QuizIdData2 % 2 == 0 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("F");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.right * moveScale;
+                            }
+                        }
+                        //3問目を解いたことありますか、左の時
+                        else if ((QuizIdData3 % 2 == 0 && QuizTFData3) || (QuizIdData3 % 2 == 1 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("L");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.forward * moveScale;
+                            }
+                        }
+                    }
+                    //2問目を解いたことありますか、右の時
+                    else if ((QuizIdData2 % 2 == 1 && QuizTFData2) || (QuizIdData2 % 2 == 0 && !QuizTFData2))
+                    {
+                        //2問目をといた直後ですか
+                        if (QuizTFDataArray.Length == 2)
+                        {
+                            //1回目に呼び出された後ですか
+                            if (Rotated)
+                            {
+                                RotateCoroutine("R");
+
+                            }
+
+                            tmpMoveThrottle += Vector3.left * moveScale;
+                        }
+                        //3問目を解いたことありますか、直進の時
+                        else if ((QuizIdData3 % 2 == 1 && QuizTFData3) || (QuizIdData3 % 2 == 0 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("F");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.left * moveScale;
+                            }
+                        }
+                        //3問目を解いたことありますか、左の時
+                        else if ((QuizIdData3 % 2 == 0 && QuizTFData3) || (QuizIdData3 % 2 == 1 && !QuizTFData3))
+                        {
+                            //3問目をといた直後ですか
+                            if (QuizTFDataArray.Length == 3)
+                            {
+                                //1回目に呼び出された後ですか
+                                if (Rotated)
+                                {
+                                    RotateCoroutine("L");
+
+                                }
+
+                                tmpMoveThrottle += Vector3.back * moveScale;
+                            }
                         }
                     }
                 }
             }
+
 
 
             // 走行状態かどうかを判定
@@ -513,6 +540,6 @@ public class PlayerMotion : MonoBehaviour
         }
 
         objectToRotate.transform.rotation = endRotation;
-        Rotated = false;
+        Rotated = true;
     }
-}}
+}

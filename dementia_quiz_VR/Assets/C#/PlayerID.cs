@@ -2,5 +2,11 @@ using UnityEngine;
 
 public class PlayerID : MonoBehaviour
 {
-    public int id; // ƒvƒŒƒCƒ„[‚ÌID‚ğİ’è
+    [HideInInspector] public int id;
+    public GetActDifficulty act;
+
+    private void Start()
+    {
+        id = act.GetQuizDifficulty();
+    }
 }

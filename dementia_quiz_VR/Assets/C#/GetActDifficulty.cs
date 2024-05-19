@@ -10,10 +10,12 @@ using UnityEngine.Networking;
 public class GetActDifficulty : MonoBehaviour
 {
     private const string difficultyGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/act-selects/";
+    private int ActId;
 
-    public void GetQuizDifficulty()
+    public int GetQuizDifficulty()
     {
         StartCoroutine(GetUserOwnData());
+        return ActId;
     }
 
     private IEnumerator GetUserOwnData()
@@ -38,7 +40,7 @@ public class GetActDifficulty : MonoBehaviour
                 {
                     ActSelDiff ActSelDiffData = ActSelDiffDataArray[0];
 
-                    int ActId = ActSelDiffData.select_diff;
+                    ActId = ActSelDiffData.select_diff;
                 }
                 else
                 {

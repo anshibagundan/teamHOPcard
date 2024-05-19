@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3521114, g: 0.724135, b: 0.9581087, a: 1}
+  m_IndirectSpecularColor: {r: 0.35290605, g: 0.72563136, b: 0.96273816, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28796,6 +28796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 18
+  act: {fileID: 2128593043}
 --- !u!114 &805662259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32187,6 +32188,8 @@ GameObject:
   - component: {fileID: 902788257}
   - component: {fileID: 902788256}
   - component: {fileID: 902788258}
+  - component: {fileID: 902788260}
+  - component: {fileID: 902788259}
   m_Layer: 0
   m_Name: XR Rig
   m_TagString: Untagged
@@ -32239,6 +32242,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8818c33e9f42610478f803fa5049251c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &902788259
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902788255}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &902788260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902788255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbd42bfe114f41848e5c4ce8169100d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftHandAnchorTransform: {fileID: 324457215}
+  RightHandAnchorTransform: {fileID: 869345448}
+  objectToRotate: {fileID: 1567831943}
+  rotationDuration: 1
+  moveScale: 1
 --- !u!1001 &903035313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51982,6 +52028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftHandAnchorTransform: {fileID: 324457215}
   RightHandAnchorTransform: {fileID: 869345448}
+  objectToRotate: {fileID: 0}
+  rotationDuration: 1
   moveScale: 0.3
 --- !u!1001 &1568113983
 PrefabInstance:
@@ -68816,6 +68864,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2120772916}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2128593042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128593044}
+  - component: {fileID: 2128593043}
+  m_Layer: 0
+  m_Name: ActNo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2128593043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128593042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c4ffc8e27d041d987ae8b06510951b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2128593044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128593042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -828, y: 121.98999, z: -952.489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2132444905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69545,3 +69637,4 @@ SceneRoots:
   - {fileID: 1299951471}
   - {fileID: 1328927706}
   - {fileID: 417020299}
+  - {fileID: 2128593044}
