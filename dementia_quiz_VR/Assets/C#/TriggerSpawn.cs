@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.Switch;
 
 public class TriggerSpawn : MonoBehaviour
 {
@@ -27,8 +26,8 @@ public class TriggerSpawn : MonoBehaviour
     private void TriggerSpawnDogs(Collider other)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        int id = GetIdFromPlayer(player);//playerID‚ğæ“¾
-            //ID‚É‚æ‚Á‚ÄğŒ•ªŠò
+        int id = GetIdFromPlayer(player);//playerIDï¿½ï¿½ï¿½æ“¾
+            //IDï¿½É‚ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             switch (id)
         {
             case 1:
@@ -141,12 +140,12 @@ public class TriggerSpawn : MonoBehaviour
         spawnDogScript.numberOfDogs = num;
         spawnDogScript.rotation = rotation;
 
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
     }
 
     private void SpawnSpace2(int num)
-    {   //1‰ÓŠ–Ú
+    {   //1ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition1 = new Vector3(666.2995f, 68.11707f, -365.1902f);
         Vector3 targetPosition1 = new Vector3(438.2995f, 68.11707f, -365.1902f);
         Quaternion rotation = Quaternion.Euler(0, 270, 0);
@@ -160,18 +159,18 @@ public class TriggerSpawn : MonoBehaviour
         spawnDogScript.numberOfDogs = num;
         spawnDogScript.rotation = rotation;
 
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
 
-        //2‰ÓŠ–Ú
+        //2ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition2 = new Vector3(666.2995f, 68.11707f, -1535.8f);
         Vector3 targetPosition2 = new Vector3(438.2995f, 68.11707f, -1535.8f);
 
         spawnDogScript.baseSpawnPosition = baseSpawnPosition2;
         spawnDogScript.targetPosition = targetPosition2;
 
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
 
@@ -179,7 +178,7 @@ public class TriggerSpawn : MonoBehaviour
 
     private void SpawnSpace3(int num)
     {
-        //1‰ÓŠ–Ú
+        //1ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition = new Vector3(-2f, 63f, 487f);
         Vector3 targetPosition = new Vector3(-2f, 63f, 290.899994f);
         Quaternion rotation1 = Quaternion.Euler(0, 180, 0);
@@ -192,34 +191,34 @@ public class TriggerSpawn : MonoBehaviour
         spawnDogScript.moveSpeed = moveSpeed;
         spawnDogScript.numberOfDogs = num;
         spawnDogScript.rotation = rotation1;
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
-        //2‰ÓŠ–Ú
+        //2ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition2 = new Vector3(1407f, 63f, 494.299988f);
         Vector3 targetPosition2 = new Vector3(1407f, 63f, 282.700012f);
 
         spawnDogScript.baseSpawnPosition = baseSpawnPosition2;
         spawnDogScript.targetPosition = targetPosition2;
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
-        //3‰ÓŠ–Ú
+        //3ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition3 = new Vector3(-632f, 64.3000031f, -1906.09998f);
         Vector3 targetPosition3 = new Vector3(-632f, 64.3000031f, -2120f);
 
         spawnDogScript.baseSpawnPosition = baseSpawnPosition3;
         spawnDogScript.targetPosition = targetPosition3;
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
-        //4‰ÓŠ–Ú
+        //4ï¿½Óï¿½ï¿½ï¿½
         Vector3 baseSpawnPosition4 = new Vector3(1671f, 64.3f, -1892f);
         Vector3 targetPosition4 = new Vector3(1671f, 64.3f, -2124f);
 
         spawnDogScript.baseSpawnPosition = baseSpawnPosition4;
         spawnDogScript.targetPosition = targetPosition4;
-        // Œ¢‚ğoŒ»‚³‚¹‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         spawnDogScript.SpawnDogs();
 
 
@@ -230,6 +229,6 @@ public class TriggerSpawn : MonoBehaviour
     private int GetIdFromPlayer(GameObject player)
     {
         PlayerID playerIdComponent = player.GetComponent<PlayerID>();
-        return playerIdComponent != null ? playerIdComponent.id : 1; // ƒfƒtƒHƒ‹ƒg’l‚ğ1‚Éİ’è
+        return playerIdComponent != null ? playerIdComponent.id : 1; // ï¿½fï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½lï¿½ï¿½1ï¿½Éİ’ï¿½
     }
 }
