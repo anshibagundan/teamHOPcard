@@ -58,18 +58,16 @@ public class game extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d("act_diff", String.valueOf(response.body().get(0)));
                     act_diff = response.body().get(0).getSelect_diff();
-                    switch (act_diff) {
-                        case 1:
-                            act_diff_text = "簡単";
-                            break;
-                        case 2:
-                            act_diff_text = "普通";
-                            break;
-                        case 3:
-                            act_diff_text = "難しい";
-                            break;
+                    if (act_diff >= 1 && act_diff <= 6) {
+                        act_diff_text = "簡単";
+                    } else if (act_diff >= 7 && act_diff <= 12) {
+                        act_diff_text = "普通";
+                    } else if (act_diff >= 13 && act_diff <= 18) {
+                        act_diff_text = "難しい";
+                    } else {
+                        act_diff_text = "未定義";  // 1~18以外の値の場合のデフォルトメッセージ
                     }
-                    act_text.setText(String.valueOf(act_diff_text));
+                    quiz_text.setText(String.valueOf(act_diff_text));
                     Log.d("act_diff", String.valueOf(act_diff));
                 } else {
                     Log.e("act_diff", "fail ");
@@ -102,7 +100,7 @@ public class game extends AppCompatActivity {
                             quiz_diff_text = "難しい";
                             break;
                     }
-                    quiz_text.setText(String.valueOf(quiz_diff_text));
+                    act_text.setText(String.valueOf(quiz_diff_text));
                     Log.d("quiz_diff", String.valueOf(quiz_diff));
                 } else {
                     Log.e("quiz_diff", "fail ");

@@ -20,15 +20,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="walking"
-                android:textSize="40sp" />
+                android:text="arucoクイズ："
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/act_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="loading"
-                android:textSize="60sp" />
+                android:textStyle="bold"
+                android:textSize="40sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -39,15 +40,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="quiz"
-                android:textSize="40sp" />
+                android:text="記憶クイズ："
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/quiz_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="loading"
-                android:textSize="60sp" />
+                android:textStyle="bold"
+                android:textSize="40sp" />
 
         </LinearLayout>
 
@@ -58,7 +60,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="200sp"
             android:text="ゲーム中・・・"
-            android:textSize="50sp" />
+            android:textSize="30sp" />
 
 
         <Button
