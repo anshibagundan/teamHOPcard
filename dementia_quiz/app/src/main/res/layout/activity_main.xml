@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E6F9FE">
+        android:background="#ffe6cc">
 
         <Button
             android:id="@+id/history"
@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:text="履歴"
             android:textSize="40sp"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#283C6B"
             android:onClick="main_history"/>
 
         <TextView
@@ -26,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="150dp"
-            android:text="title"
+            android:text="Aruco"
+            android:textStyle="bold"
             android:textSize="80sp" />
 
         <Button
@@ -35,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="170sp"
-            android:backgroundTint="#990000"
+            android:backgroundTint="#0074A1"
             android:text="開始"
             android:textSize="60sp"
             android:onClick="main_home"/>
