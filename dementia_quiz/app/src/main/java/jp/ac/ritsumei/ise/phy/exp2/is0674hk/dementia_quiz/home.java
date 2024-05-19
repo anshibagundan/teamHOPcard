@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -29,6 +31,9 @@ public class home extends AppCompatActivity {
     private FrameLayout quiz_selectDiff;
     private WebSocket webSocket;
     private final OkHttpClient client = new OkHttpClient();
+    private int randEasy,randNormal,randDifficult;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +52,14 @@ public class home extends AppCompatActivity {
         // WebSocket接続を確立
         startWebSocket();
 
-        easy.setOnClickListener(v -> sendDataAndCloseWebSocket(1));
-        normal.setOnClickListener(v -> sendDataAndCloseWebSocket(2));
-        difficult.setOnClickListener(v -> sendDataAndCloseWebSocket(3));
+        // 1から6のランダムな数字を生成
+        randEasy = ThreadLocalRandom.current().nextInt(1, 7);
+        randNormal = ThreadLocalRandom.current().nextInt(7, 13);
+        randDifficult = ThreadLocalRandom.current().nextInt(13, 19);
+
+        easy.setOnClickListener(v -> sendDataAndCloseWebSocket(randEasy));
+        normal.setOnClickListener(v -> sendDataAndCloseWebSocket(randNormal));
+        difficult.setOnClickListener(v -> sendDataAndCloseWebSocket(randDifficult));
     }
 
     // WebSocket接続を確立
