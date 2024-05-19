@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5;
-    [SerializeField] private float _jumpForce = 5;
 
     private Rigidbody _rigidbody;
     private InputMove _gameInputs;

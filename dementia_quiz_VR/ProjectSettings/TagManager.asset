@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - QuizCollider
+  - DogCollider
+  - Dog
   layers:
   - Default
   - TransparentFX
