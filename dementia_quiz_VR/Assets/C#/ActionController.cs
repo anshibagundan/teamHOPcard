@@ -1,15 +1,14 @@
-/*
- * 最後ののクイズシーンでのクイズデータ通信
- */
 using System;
-using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
-public class ActionManager : MonoBehaviour
+public class ActionController : MonoBehaviour
 {
+
     public TextMeshProUGUI Actname;
     public TextMeshProUGUI Actsel_1;
     public TextMeshProUGUI Actsel_2;
@@ -17,27 +16,85 @@ public class ActionManager : MonoBehaviour
     private const string baseGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/actions/";
     private const string posturl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/act-tfs/";
     private int difficulty = 1;
-    private String geturl = "";
+    private String geturl;
     private int randomIndex = 1;
     private int ActDataId = 1;
     private bool hasnotAct = false;
     private bool isfinalAct = false;
     private bool fullAskedAct = false;
     private Quaternion endRotation;
+    private bool isProcessing = false;
 
-    //シーンが始まるとクイズを取得する
     public void Start()
     {
         StartCoroutine(GetData());
     }
 
-    //ボタンを押すとクイズの正解不正解を登録する
-    public void PostActTF(String LorR)
+    private void Update()
     {
-        StartCoroutine(PostData(LorR));
+        if (isProcessing) return;
+
+        // 右コントローラーのボタン入力を検出
+        if (CheckRightControllerButtons())
+        {
+            isProcessing = true;
+            StartCoroutine(PostData("R"));
+        }
+
+        // 左コントローラーのボタン入力を検出
+        if (CheckLeftControllerButtons())
+        {
+            isProcessing = true;
+            StartCoroutine(PostData("L"));
+        }
     }
 
-    //クイズを取得する関数
+
+
+
+
+    private bool CheckRightControllerButtons()
+    {
+        // 右コントローラーの全てのボタンを確認
+        InputDevice rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        if (rightController.isValid)
+        {
+            bool buttonValue;
+            if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out buttonValue) && buttonValue)
+                return true;
+            // 他のボタンも必要に応じて追加
+        }
+
+        return false;
+    }
+
+    private bool CheckLeftControllerButtons()
+    {
+        // 左コントローラーの全てのボタンを確認
+        InputDevice leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        if (leftController.isValid)
+        {
+            bool buttonValue;
+            if (leftController.TryGetFeatureValue(CommonUsages.primaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out buttonValue) && buttonValue)
+                return true;
+            // 他のボタンも必要に応じて追加
+        }
+
+        return false;
+    }
+
     private IEnumerator GetData()
     {
         //クイズの難易度取得
@@ -46,7 +103,8 @@ public class ActionManager : MonoBehaviour
             webRequest.SetRequestHeader("X-Debug-Mode", "true");
             yield return webRequest.SendWebRequest();
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
+                webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error: " + webRequest.error);
             }
@@ -78,7 +136,8 @@ public class ActionManager : MonoBehaviour
             webRequest.SetRequestHeader("X-Debug-Mode", "true");
             yield return webRequest.SendWebRequest();
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError ||
+                webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error: " + webRequest.error);
             }
@@ -163,6 +222,7 @@ public class ActionManager : MonoBehaviour
             Debug.LogError("no Act found");
         }
 
+        isProcessing = false;
         SceneManager.LoadScene("TitleScene");
     }
 }

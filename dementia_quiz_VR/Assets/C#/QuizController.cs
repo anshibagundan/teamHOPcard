@@ -1,15 +1,14 @@
-/*
- * 途中のクイズシーンでのクイズデータ通信とカメラ移動
- */
 using System;
-using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
-public class QuizManager : MonoBehaviour
+public class QuizController : MonoBehaviour
 {
+
     public TextMeshProUGUI Quizname;
     public TextMeshProUGUI Quizsel_1;
     public TextMeshProUGUI Quizsel_2;
@@ -20,7 +19,7 @@ public class QuizManager : MonoBehaviour
     private const string baseGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
     private const string posturl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-tfs/";
     private int difficulty = 1;
-    private String geturl = "";
+    private String geturl;
     private int randomIndex = 1;
     private int quizDataId = 1;
     private int[] AskedQuestionList;
@@ -28,21 +27,72 @@ public class QuizManager : MonoBehaviour
     private bool isfinalQuiz = false;
     private bool fullAskedQuiz = false;
     private Quaternion endRotation;
+    private bool isAnswered = false;
+    private const int maxAttempts = 30;
 
-    //シーンが始まるとクイズを取得する
     public void Start()
     {
         StartCoroutine(GetData());
     }
 
-    //ボタンを押すとクイズの正解不正解を登録する
-    public void PostQuizTF(String LorR)
+    private void Update()
     {
-        StartCoroutine(PostData(LorR));
-        if (!isRotating)
+        // 右コントローラーのボタン入力を検出
+        if (CheckRightControllerButtons() && !isAnswered)
         {
-            StartCoroutine(RotateCoroutine(LorR));
+            isAnswered = true;
+            StartCoroutine(PostData("R"));
+            StartCoroutine(RotateCoroutine("R"));
         }
+
+        // 左コントローラーのボタン入力を検出
+        if (CheckLeftControllerButtons() && !isAnswered)
+        {
+            isAnswered = true;
+            StartCoroutine(PostData("L"));
+            StartCoroutine(RotateCoroutine("L"));
+        }
+    }
+
+
+    private bool CheckRightControllerButtons()
+    {
+        // 右コントローラーの全てのボタンを確認
+        InputDevice rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        if (rightController.isValid)
+        {
+            bool buttonValue;
+            if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out buttonValue) && buttonValue)
+                return true;
+            if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out buttonValue) && buttonValue)
+                return true;
+            // 他のボタンも必要に応じて追加
+        }
+        return false;
+    }
+
+    private bool CheckLeftControllerButtons()
+    {
+        // 左コントローラーの全てのボタンを確認
+        InputDevice leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
+        if (leftController.isValid)
+        {
+            bool buttonValue;
+            if (leftController.TryGetFeatureValue(CommonUsages.primaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out buttonValue) && buttonValue)
+                return true;
+            if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out buttonValue) && buttonValue)
+                return true;
+            // 他のボタンも必要に応じて追加
+        }
+        return false;
     }
 
     //クイズを取得する関数
@@ -257,7 +307,7 @@ public class QuizManager : MonoBehaviour
         Quaternion startRotation = objectToRotate.transform.rotation;
 
 
-        if (AskedQuestionList.Length == 0 ||AskedQuestionList.Length == 1 )
+        if (AskedQuestionList == null ||AskedQuestionList.Length == 1 )
         {
             if (LorR == "R" )
             {
@@ -301,15 +351,16 @@ public class QuizManager : MonoBehaviour
 
         objectToRotate.transform.rotation = endRotation;
         isRotating = false;
+        isAnswered = false;
 
         // 回転後にシーンを読み込む
         if (!isfinalQuiz)
         {
-            SceneManager.LoadScene("New_WalkScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
         else
         {
-            SceneManager.LoadScene("FinalQuizScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
     }
 }
