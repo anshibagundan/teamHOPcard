@@ -26,7 +26,7 @@ public class PlayerMotion : MonoBehaviour
     private float FallSpeed = 0.0f;
     private float Acceleration = 0.1f;
     private float Damping = 0.3f;
-    private float GravityModifier = 0.379f;
+    private float GravityModifier = 0f;
 
     // コントローラーの速度と加速度を保存する変数
     private Vector3 touchVelocityL;
