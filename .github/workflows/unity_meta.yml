@@ -1,0 +1,47 @@
+name: Unity VR Build and Test for Meta Quest
+
+on:
+  push:
+    branches:
+      - 'feature/*'
+  pull_request:
+    branches:
+      - development
+  workflow_dispatch:
+
+jobs:
+  vr-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Cache Library Folder
+      uses: actions/cache@v2
+      with:
+        path: Library
+        key: ${{ runner.os }}-library-${{ hashFiles('**/ProjectSettings/ProjectVersion.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-library-
+
+    - name: Setup Unity
+      uses: game-ci/unity-setup@v2
+      with:
+        unity-version: '2022.3.5f1'
+
+    - name: Run VR Tests
+      uses: game-ci/unity-test-runner@v2
+      with:
+        testMode: playmode
+        artifactsPath: ${{ github.workspace }}/artifacts
+
+    - name: Build for Meta Quest
+      uses: game-ci/unity-builder@v2
+      with:
+        targetPlatform: Android
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: VR Build
+        path: build/
