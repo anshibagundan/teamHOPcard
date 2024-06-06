@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-class HOPConsumer_start(AsyncWebsocketConsumer):
+class HOPConsumer_quiz(AsyncWebsocketConsumer):
     async def connect(self):
         await self.channel_layer.group_add("HOP_group", self.channel_name)
         await self.accept()
@@ -27,7 +27,7 @@ class HOPConsumer_start(AsyncWebsocketConsumer):
 
         # Prepare the response data
         response_data = {
-            "start": data.get("start", "")
+            "quiz": data.get("quiz", "")
         }
 
         # Send the response data back to the client

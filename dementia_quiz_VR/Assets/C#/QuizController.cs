@@ -3,8 +3,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using UnityEngine;
+using WebSocketSharp;
 
 public class QuizController : MonoBehaviour
 {
@@ -30,9 +31,16 @@ public class QuizController : MonoBehaviour
     private bool isAnswered = false;
     private const int maxAttempts = 30;
 
+    private WebSocket ws;
+    private bool canTransition = false;
+
+
     public void Start()
     {
         StartCoroutine(GetData());
+        ws = new WebSocket("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/quiz/");
+        ws.OnMessage += OnMessageReceived;
+        ws.Connect();
     }
 
     private void Update()
@@ -52,6 +60,13 @@ public class QuizController : MonoBehaviour
             StartCoroutine(PostData("L"));
             StartCoroutine(RotateCoroutine("L"));
         }
+        if (canTransition)
+        {
+            // シーン遷移の処理を行う
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
+        }
+
+
     }
 
 
@@ -361,6 +376,30 @@ public class QuizController : MonoBehaviour
         else
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
+        }
+    }
+    //スキップボタンが出たら，falseにする
+    private void OnMessageReceived(object sender, MessageEventArgs e)
+    {
+        if (e.IsText)
+        {
+            Debug.Log($"Received JSON data: {e.Data}");
+
+            // JSONデータを受け取ったらシーン遷移フラグを立てる
+            canTransition = true;
+            Debug.Log("Transition allowed");
+        }
+        else
+        {
+            Debug.Log("Received non-text data");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (ws != null && ws.IsAlive)
+        {
+            ws.Close();
         }
     }
 }
