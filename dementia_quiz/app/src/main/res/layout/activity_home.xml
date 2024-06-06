@@ -198,7 +198,7 @@
                 android:id="@+id/easy"
                 android:layout_width="180sp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#990000"
+                android:backgroundTint="#283C6B"
                 android:text="簡単"
                 android:textSize="40sp"
                 android:onClick="set_actEasy"
@@ -209,7 +209,7 @@
                 android:layout_width="180sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40sp"
-                android:backgroundTint="#9900"
+                android:backgroundTint="#283C6B"
                 android:text="普通"
                 android:textSize="40sp"
                 android:onClick="set_actNormal"/>
@@ -219,7 +219,7 @@
                 android:layout_width="180sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40sp"
-                android:backgroundTint="#9900"
+                android:backgroundTint="#283C6B"
                 android:text="難しい"
                 android:textSize="40sp"
                 android:onClick="set_actDifficult"/>

@@ -73,6 +73,16 @@
             android:onClick="game_result"
             android:text="終了"
             android:textSize="40sp" />
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="スキップ"
+            android:textSize="20sp"
+            android:backgroundTint="#283C6B"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="220sp"/>
+
 
         <ImageView
             android:id="@+id/map"
