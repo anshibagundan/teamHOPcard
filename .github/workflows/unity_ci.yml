@@ -3,11 +3,11 @@ name: Unity CI
 on:
   push:
     branches:
-      - development
+      - 'dev/*'
       - 'feature/*'
   pull_request:
     branches:
-      - development
+      - 'dev/*'
 
 env:
   WORKING_DIRECTORY: dementia_quiz_VR
