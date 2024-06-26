@@ -3,8 +3,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using UnityEngine;
+using WebSocketSharp;
 
 public class QuizController : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class QuizController : MonoBehaviour
     public TextMeshProUGUI Quizname;
     public TextMeshProUGUI Quizsel_1;
     public TextMeshProUGUI Quizsel_2;
-    public GameObject objectToRotate;
-    public float rotationDuration = 1f; // 回転にかける時間
     private bool isRotating = false; // 回転中かどうかのフラグ
     private const string difficultyGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quiz-selects/";
     private const string baseGetUrl = "https://teamhopcard-aa92d1598b3a.herokuapp.com/quizzes/";
@@ -30,9 +29,16 @@ public class QuizController : MonoBehaviour
     private bool isAnswered = false;
     private const int maxAttempts = 30;
 
+    private WebSocket ws;
+    private bool canTransition = false;
+
+
     public void Start()
     {
         StartCoroutine(GetData());
+        ws = new WebSocket("wss://teamhopcard-aa92d1598b3a.herokuapp.com/ws/hop/quiz/");
+        ws.OnMessage += OnMessageReceived;
+        ws.Connect();
     }
 
     private void Update()
@@ -42,7 +48,7 @@ public class QuizController : MonoBehaviour
         {
             isAnswered = true;
             StartCoroutine(PostData("R"));
-            StartCoroutine(RotateCoroutine("R"));
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
 
         // 左コントローラーのボタン入力を検出
@@ -50,8 +56,15 @@ public class QuizController : MonoBehaviour
         {
             isAnswered = true;
             StartCoroutine(PostData("L"));
-            StartCoroutine(RotateCoroutine("L"));
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
         }
+        if (canTransition)
+        {
+            // シーン遷移の処理を行う
+            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
+        }
+
+
     }
 
 
@@ -300,67 +313,29 @@ public class QuizController : MonoBehaviour
             Debug.LogError("no quiz found");
         }
     }
-    //回転用
-    IEnumerator RotateCoroutine(String LorR)
+
+    //スキップボタンが出たら，falseにする
+    private void OnMessageReceived(object sender, MessageEventArgs e)
     {
-        isRotating = true;
-        Quaternion startRotation = objectToRotate.transform.rotation;
-
-
-        if (AskedQuestionList == null ||AskedQuestionList.Length == 1 )
+        if (e.IsText)
         {
-            if (LorR == "R" )
-            {
-                endRotation = startRotation * Quaternion.Euler(0, 90, 0);
-            }
-            else if(LorR == "L")
-            {
-                endRotation = startRotation * Quaternion.Euler(0, -90, 0);
-            }
-            else
-            {
-                endRotation = startRotation * Quaternion.Euler(0, 0, 0);
-            }
+            Debug.Log($"Received JSON data: {e.Data}");
 
-        }else if (AskedQuestionList.Length == 2)
-        {
-            if (LorR == "R" )
-            {
-                endRotation = startRotation * Quaternion.Euler(0, 1, 0);
-            }
-            else if(LorR == "L")
-            {
-                endRotation = startRotation * Quaternion.Euler(0, -90, 0);
-            }
-            else
-            {
-                endRotation = startRotation * Quaternion.Euler(0, 0, 0);
-            }
-        }
-
-
-
-        float elapsedTime = 0;
-
-        while (elapsedTime < rotationDuration)
-        {
-            objectToRotate.transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / rotationDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        objectToRotate.transform.rotation = endRotation;
-        isRotating = false;
-        isAnswered = false;
-
-        // 回転後にシーンを読み込む
-        if (!isfinalQuiz)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
+            // JSONデータを受け取ったらシーン遷移フラグを立てる
+            canTransition = true;
+            Debug.Log("Transition allowed");
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("New_WalkScene");
+            Debug.Log("Received non-text data");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (ws != null && ws.IsAlive)
+        {
+            ws.Close();
         }
     }
 }
