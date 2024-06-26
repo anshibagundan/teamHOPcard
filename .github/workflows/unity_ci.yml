@@ -3,14 +3,17 @@ name: Unity CI
 on:
   push:
     branches:
-      - 'dev/*'
-      - 'feature/*'
+      - development
+      - 'feature/**'
   pull_request:
     branches:
-      - 'dev/*'
+      - development
 
 env:
-  WORKING_DIRECTORY: dementia_quiz_VR
+  WORKING_DIRECTORY: .
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
 jobs:
   test:
@@ -26,60 +29,44 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: ${{ env.WORKING_DIRECTORY }}
-
       - name: Create LFS file list
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         working-directory: ${{ env.WORKING_DIRECTORY }}
-
       - name: Restore LFS cache
         uses: actions/cache@v3
-        id: lfs-cache
         with:
           path: ${{ env.WORKING_DIRECTORY }}/.git/lfs
           key: ${{ runner.os }}-lfs-${{ hashFiles('${{ env.WORKING_DIRECTORY }}/.lfs-assets-id') }}
-
       - name: Git LFS Pull
         run: |
           git lfs pull
           git add .
           git reset --hard
         working-directory: ${{ env.WORKING_DIRECTORY }}
-
       - uses: actions/cache@v3
         with:
           path: ${{ env.WORKING_DIRECTORY }}/Library
           key: Library-${{ hashFiles('${{ env.WORKING_DIRECTORY }}/Assets/**', '${{ env.WORKING_DIRECTORY }}/Packages/**', '${{ env.WORKING_DIRECTORY }}/ProjectSettings/**') }}
           restore-keys: |
             Library-
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-
       - uses: game-ci/unity-test-runner@v4
-        id: tests
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           testMode: ${{ matrix.testMode }}
           artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           checkName: ${{ matrix.testMode }} Test Results
           coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-
+          workingDirectory: ${{ env.WORKING_DIRECTORY }}
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
-          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.tests.outputs.artifactsPath }}
-
+          path: ${{ env.WORKING_DIRECTORY }}/${{ matrix.testMode }}-artifacts
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.tests.outputs.coveragePath }}
+          path: ${{ env.WORKING_DIRECTORY }}/${{ matrix.testMode }}-coverage
 
   build:
     needs: test
@@ -87,40 +74,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: ${{ env.WORKING_DIRECTORY }}
-
       - name: Restore LFS cache
         uses: actions/cache@v3
         with:
           path: ${{ env.WORKING_DIRECTORY }}/.git/lfs
           key: ${{ runner.os }}-lfs-${{ hashFiles('${{ env.WORKING_DIRECTORY }}/.lfs-assets-id') }}
-
       - name: Git LFS Pull
         run: |
           git lfs pull
           git add .
           git reset --hard
         working-directory: ${{ env.WORKING_DIRECTORY }}
-
       - uses: actions/cache@v3
         with:
           path: ${{ env.WORKING_DIRECTORY }}/Library
           key: Library-${{ hashFiles('${{ env.WORKING_DIRECTORY }}/Assets/**', '${{ env.WORKING_DIRECTORY }}/Packages/**', '${{ env.WORKING_DIRECTORY }}/ProjectSettings/**') }}
           restore-keys: |
             Library-
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-
       - name: Build project
         uses: game-ci/unity-builder@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-
+          workingDirectory: ${{ env.WORKING_DIRECTORY }}
       - uses: actions/upload-artifact@v3
         with:
           name: Android Build
