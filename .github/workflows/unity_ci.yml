@@ -10,7 +10,7 @@ on:
       - development
 
 env:
-  WORKING_DIRECTORY: dementia_quiz_VR
+  WORKING_DIRECTORY: ./dementia_quiz_VR
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
   UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
